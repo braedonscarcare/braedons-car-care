@@ -1,0 +1,1437 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Braedon's Car Care | Mobile &amp; In-Shop Detailing · Bay Area, CA</title>
+  <meta name="description" content="Bay Area's premier car detailing service in-shop or mobile. We come to you (water &amp; power access required) or you come to us. Exterior detail, interior, paint correction." />
+  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="apple-touch-icon" href="logo.png">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── TOKENS ─────────────────────────────── */
+    :root {
+      --navy-950: #0F0E0B;
+      --navy-900: #1A1812;
+      --navy-800: #231F16;
+      --navy-700: #2D2819;
+      --navy-600: #3D3520;
+      --gold-200: #9AAEC4;
+      --gold-300: #7E96B0;
+      --gold-400: #D4A84B;
+      --gold-500: #B8922F;
+      --gold-600: #9A7820;
+      --off-white: #F8F7F4;
+    }
+
+    /* ── BASE ───────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background-color: var(--off-white);
+      color: #1a1a1a;
+      overflow-x: hidden;
+    }
+    h1, h2, h3, h4 { font-family: 'Cormorant Garamond', serif; }
+    img { display: block; }
+    a { text-decoration: none; }
+
+    /* ── SCROLL REVEAL ──────────────────────── */
+    @media (prefers-reduced-motion: no-preference) {
+      .reveal       { opacity: 0; transform: translateY(28px);  transition: opacity .75s cubic-bezier(.16,1,.3,1), transform .75s cubic-bezier(.16,1,.3,1); }
+      .reveal-left  { opacity: 0; transform: translateX(-36px); transition: opacity .8s  cubic-bezier(.16,1,.3,1), transform .8s  cubic-bezier(.16,1,.3,1); }
+      .reveal-right { opacity: 0; transform: translateX(36px);  transition: opacity .8s  cubic-bezier(.16,1,.3,1), transform .8s  cubic-bezier(.16,1,.3,1); }
+      .reveal.visible, .reveal-left.visible, .reveal-right.visible { opacity: 1; transform: none; }
+    }
+    .d1 { transition-delay: .1s; }
+    .d2 { transition-delay: .2s; }
+    .d3 { transition-delay: .3s; }
+    .d4 { transition-delay: .4s; }
+    .d5 { transition-delay: .5s; }
+
+    /* ── KEYFRAMES ──────────────────────────── */
+    @keyframes fadeUp   { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:none; } }
+    @keyframes float    { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-7px); } }
+    @keyframes scrollDot{ 0%,100% { transform:translateY(0); opacity:1; } 60% { transform:translateY(18px); opacity:0; } 61% { transform:translateY(-6px); opacity:0; } 80% { opacity:1; } }
+    @keyframes shimmer  { 0% { background-position:-200% center; } 100% { background-position:200% center; } }
+
+    /* ── NAVBAR ─────────────────────────────── */
+    #navbar {
+      position: fixed; top: 14px; left: 50%;
+      transform: translateX(-50%);
+      width: calc(100% - 28px); max-width: 1200px;
+      z-index: 50; padding: 0 24px; height: 62px;
+      display: flex; align-items: center; justify-content: space-between;
+      border-radius: 16px;
+      transition: background .35s ease, box-shadow .35s ease, backdrop-filter .35s ease;
+    }
+    #navbar.scrolled {
+      background: rgba(8, 18, 34, 0.93);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      box-shadow: 0 6px 32px rgba(0,0,0,.35);
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem; font-weight: 600;
+      color: white; letter-spacing: .02em;
+      white-space: nowrap;
+    }
+    .nav-logo span { color: var(--gold-400); }
+    .nav-link {
+      color: rgba(255,255,255,.8); font-size: .875rem; font-weight: 500;
+      letter-spacing: .03em;
+      transition: color .2s;
+    }
+    .nav-link:hover { color: var(--gold-400); }
+    .nav-cta {
+      background: var(--gold-400); color: var(--navy-900) !important;
+      padding: 9px 20px; border-radius: 9px;
+      font-size: .85rem; font-weight: 600; letter-spacing: .02em;
+      transition: background .2s, transform .2s, box-shadow .2s;
+    }
+    .nav-cta:hover {
+      background: var(--gold-300);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 18px rgba(212,168,75,.35);
+    }
+
+    /* Mobile menu */
+    #mobile-drawer {
+      position: fixed; inset: 0; z-index: 100;
+      background: var(--navy-950);
+      display: none; flex-direction: column;
+      align-items: center; justify-content: center; gap: 36px;
+    }
+    #mobile-drawer.open { display: flex; }
+    #mobile-drawer a {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.25rem; font-weight: 500;
+      color: white; letter-spacing: .02em;
+      transition: color .2s;
+    }
+    #mobile-drawer a:hover { color: var(--gold-400); }
+    @media (min-width: 769px) { #hamburger { display: none !important; } }
+    @media (max-width: 768px) { .nav-links-desktop { display: none !important; } }
+
+    /* ── HERO ───────────────────────────────── */
+    #hero {
+      position: relative; min-height: 100vh;
+      display: flex; align-items: center; overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      overflow: hidden;
+    }
+    .hero-bg video {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center;
+    }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(130deg,
+        rgba(5,13,26,.9) 0%,
+        rgba(10,22,40,.78) 55%,
+        rgba(5,13,26,.6) 100%);
+    }
+    .hero-content { position: relative; z-index: 2; }
+
+    .eyebrow-tag {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: .72rem; font-weight: 500;
+      letter-spacing: .22em; text-transform: uppercase;
+      color: var(--gold-400);
+    }
+    .eyebrow-tag::before, .eyebrow-tag::after {
+      content: ''; height: 1px; width: 36px;
+      background: var(--gold-400); opacity: .55;
+    }
+    .hero-h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 7.5vw, 6.25rem);
+      font-weight: 600; line-height: 1.0;
+      color: white; letter-spacing: -.01em;
+    }
+    .hero-h1 em { font-style: italic; color: var(--gold-300); }
+    .hero-sub {
+      color: rgba(255,255,255,.68);
+      font-size: 1.05rem; line-height: 1.75;
+      font-weight: 300; max-width: 490px;
+    }
+
+    /* Scroll cue */
+    .scroll-cue {
+      position: absolute; bottom: 36px; left: 50%;
+      transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 6px;
+      animation: fadeUp .8s ease 1.2s both;
+    }
+    .scroll-cue span {
+      font-size: .68rem; letter-spacing: .18em;
+      text-transform: uppercase; color: rgba(255,255,255,.4);
+    }
+    .scroll-mouse {
+      width: 22px; height: 36px; border: 1.5px solid rgba(255,255,255,.3);
+      border-radius: 11px; position: relative;
+    }
+    .scroll-dot {
+      position: absolute; top: 6px; left: 50%;
+      transform: translateX(-50%);
+      width: 4px; height: 4px; border-radius: 50%;
+      background: var(--gold-400);
+      animation: scrollDot 1.8s ease infinite;
+    }
+
+    /* Buttons */
+    .btn-gold {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--gold-400); color: var(--navy-900);
+      font-weight: 600; font-size: .9rem;
+      padding: 14px 28px; border-radius: 10px;
+      letter-spacing: .02em; border: none; cursor: pointer;
+      transition: background .2s, transform .2s, box-shadow .2s;
+    }
+    .btn-gold:hover {
+      background: var(--gold-300);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 26px rgba(212,168,75,.38);
+    }
+    .btn-outline-white {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: transparent; color: white;
+      font-weight: 500; font-size: .9rem;
+      padding: 14px 28px; border-radius: 10px;
+      border: 1.5px solid rgba(255,255,255,.25); cursor: pointer;
+      transition: background .2s, border-color .2s, transform .2s;
+    }
+    .btn-outline-white:hover {
+      background: rgba(255,255,255,.08);
+      border-color: rgba(255,255,255,.5);
+      transform: translateY(-2px);
+    }
+
+    /* ── STATS ──────────────────────────────── */
+    .stats-bar {
+      background: var(--navy-900);
+      border-top: 1px solid rgba(212,168,75,.14);
+      border-bottom: 1px solid rgba(212,168,75,.14);
+    }
+    .stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.8rem; font-weight: 600;
+      color: var(--gold-400); line-height: 1;
+    }
+    .stat-lbl {
+      font-size: .72rem; letter-spacing: .12em;
+      text-transform: uppercase; color: rgba(255,255,255,.5);
+      margin-top: 5px;
+    }
+    .stat-sep {
+      width: 1px; height: 50px;
+      background: rgba(212,168,75,.18);
+      flex-shrink: 0;
+    }
+
+    /* ── SECTION HEADER ─────────────────────── */
+    .sec-eye {
+      display: inline-block; font-size: .72rem;
+      font-weight: 500; letter-spacing: .22em;
+      text-transform: uppercase; color: var(--gold-500);
+      margin-bottom: 10px;
+    }
+    .sec-eye.light { color: var(--gold-400); }
+    .sec-h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3.3rem);
+      font-weight: 600; line-height: 1.15; color: var(--navy-900);
+    }
+    .sec-h2.light { color: white; }
+    .gold-rule {
+      height: 2px; background: var(--gold-400);
+      width: 0; margin-top: 16px;
+      transition: width .85s cubic-bezier(.16,1,.3,1) .25s;
+    }
+    .gold-rule.visible { width: 72px; }
+    .gold-rule.center { margin-left: auto; margin-right: auto; }
+
+    /* ── SERVICE CARDS ──────────────────────── */
+    .svc-card {
+      background: var(--navy-800); border-radius: 22px;
+      padding: 38px 34px 34px;
+      border: 1px solid rgba(0,0,0,.055);
+      position: relative; overflow: hidden;
+      transition: transform .32s cubic-bezier(.16,1,.3,1), box-shadow .32s ease, border-color .32s;
+      cursor: default;
+    }
+    .svc-card::after {
+      content: ''; position: absolute; top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold-600), var(--gold-300), var(--gold-600));
+      background-size: 200% auto;
+      opacity: 0; transition: opacity .3s;
+    }
+    .svc-card:hover { transform: translateY(-7px); box-shadow: 0 28px 64px rgba(10,22,40,.12); border-color: rgba(212,168,75,.22); }
+    .svc-card:hover::after { opacity: 1; animation: shimmer 2.5s linear infinite; }
+
+    .svc-card.featured {
+      background: var(--navy-900);
+      border-color: rgba(212,168,75,.28);
+    }
+    .svc-card.featured .svc-name  { color: white; }
+    .svc-card.featured .svc-desc  { color: rgba(255,255,255,.62); }
+    .svc-card.featured .svc-price { color: var(--gold-400); }
+    .svc-card.featured .svc-li    { color: rgba(255,255,255,.72); }
+    .svc-card.featured .li-dot    { background: var(--gold-400); }
+    .svc-card.featured .svc-badge { display: inline-block; }
+
+    .svc-badge {
+      display: none; background: var(--gold-400); color: var(--navy-900);
+      font-size: .68rem; font-weight: 700; letter-spacing: .1em;
+      text-transform: uppercase; padding: 4px 12px; border-radius: 20px;
+      margin-bottom: 14px;
+    }
+    .svc-icon {
+      width: 50px; height: 50px; border-radius: 13px;
+      background: linear-gradient(135deg, var(--navy-800), var(--navy-700));
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 18px;
+    }
+    .svc-name  { font-family:'Cormorant Garamond',serif; font-size:1.65rem; font-weight:600; color:white; margin-bottom:8px; }
+    .svc-desc  { font-size:.88rem; color:rgba(255,255,255,.65); line-height:1.65; margin-bottom:18px; }
+    .svc-price { font-family:'Cormorant Garamond',serif; font-size:2rem; font-weight:600; color:rgba(255,255,255,.9); margin-bottom:18px; }
+    .svc-price small { font-family:'DM Sans',sans-serif; font-size:.85rem; font-weight:400; opacity:.55; }
+    .svc-feats { list-style:none; padding:0; margin:0 0 26px; display:flex; flex-direction:column; gap:9px; }
+    .svc-li    { display:flex; align-items:center; gap:9px; font-size:.865rem; color:rgba(255,255,255,.75); }
+    .li-dot    { width:5px; height:5px; border-radius:50%; background:var(--navy-700); flex-shrink:0; }
+
+    .btn-card {
+      display:inline-flex; align-items:center; justify-content:center; gap:6px;
+      width:100%; padding:13px 18px; border-radius:10px;
+      font-size:.875rem; font-weight:600; letter-spacing:.01em;
+      border:none; cursor:pointer; transition: all .2s;
+      text-decoration:none;
+    }
+    .btn-card-dark  { background:var(--navy-900); color:white; }
+    .btn-card-dark:hover  { background:var(--navy-700); transform:translateY(-1px); }
+    .btn-card-gold  { background:var(--gold-400); color:var(--navy-900); }
+    .btn-card-gold:hover  { background:var(--gold-300); transform:translateY(-1px); box-shadow:0 8px 22px rgba(212,168,75,.4); }
+
+    .btn-outline-dark {
+      display:inline-flex; align-items:center; gap:8px;
+      background:transparent; color:var(--navy-900);
+      font-weight:600; font-size:.9rem;
+      padding:14px 28px; border-radius:10px;
+      border:1.5px solid var(--navy-900); cursor:pointer;
+      transition:background .2s, color .2s, transform .2s;
+      text-decoration:none;
+    }
+    .btn-outline-dark:hover {
+      background:var(--navy-900); color:white;
+      transform:translateY(-2px);
+    }
+
+    /* ── BEFORE / AFTER ─────────────────────── */
+    .ba-wrap {
+      position:relative; border-radius:18px; overflow:hidden;
+      user-select:none; -webkit-user-select:none;
+      cursor:ew-resize;
+    }
+    .ba-img {
+      position:absolute; inset:0;
+      background-size:cover; background-position:center;
+    }
+    .ba-after { clip-path: inset(0 50% 0 0); }
+    .ba-track {
+      position:absolute; inset:0; z-index:10;
+      display:flex; align-items:stretch;
+    }
+    .ba-line {
+      width:2px; background:white; flex-shrink:0;
+      box-shadow:0 0 12px rgba(0,0,0,.4);
+      margin-left:50%; transition:margin-left .0s;
+      position:relative;
+    }
+    .ba-knob {
+      position:absolute; top:50%; left:50%;
+      transform:translate(-50%,-50%);
+      width:44px; height:44px; background:white; border-radius:50%;
+      display:flex; align-items:center; justify-content:center;
+      box-shadow:0 4px 18px rgba(0,0,0,.3);
+    }
+    .ba-lbl {
+      position:absolute; top:14px; z-index:5;
+      padding:5px 12px; font-size:.72rem; font-weight:700;
+      letter-spacing:.09em; text-transform:uppercase; border-radius:20px;
+    }
+    .ba-lbl-b { left:14px; background:rgba(0,0,0,.6); color:white; }
+    .ba-lbl-a { right:14px; background:rgba(212,168,75,.92); color:var(--navy-900); }
+    .ba-range {
+      position:absolute; inset:0; z-index:20; width:100%; height:100%;
+      opacity:0; cursor:ew-resize;
+      -webkit-appearance:none; appearance:none;
+    }
+
+    /* ── TESTIMONIALS ───────────────────────── */
+    .review-card {
+      background:white; border-radius:18px;
+      padding:28px 28px 24px;
+      border:1px solid rgba(0,0,0,.055);
+      transition:transform .3s ease, box-shadow .3s ease;
+      cursor:default;
+    }
+    .review-card:hover { transform:translateY(-5px); box-shadow:0 18px 44px rgba(0,0,0,.09); }
+    .star-svg { color:var(--gold-400); }
+    .rev-text { font-size:.92rem; color:#374151; line-height:1.72; margin-bottom:18px; }
+    .rev-author { display:flex; align-items:center; gap:12px; }
+    .rev-avatar {
+      width:40px; height:40px; border-radius:50%; flex-shrink:0;
+      background:linear-gradient(135deg, var(--navy-700), var(--navy-600));
+      display:flex; align-items:center; justify-content:center;
+      font-family:'Cormorant Garamond',serif; font-size:1rem; font-weight:600;
+      color:var(--gold-400);
+    }
+    .rev-name { font-weight:600; font-size:.875rem; color:var(--navy-900); }
+    .rev-loc  { font-size:.78rem; color:#9CA3AF; margin-top:1px; }
+
+    /* ── AREA PILLS ─────────────────────────── */
+    .city-pill {
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(212,168,75,.18);
+      color:rgba(255,255,255,.78);
+      font-size:.8rem; font-weight:500; letter-spacing:.03em;
+      padding:9px 16px; border-radius:40px; text-align:center;
+      transition:background .2s, border-color .2s, color .2s;
+      cursor:default;
+    }
+    .city-pill:hover {
+      background:rgba(212,168,75,.12);
+      border-color:rgba(212,168,75,.55);
+      color:var(--gold-300);
+    }
+
+    /* ── CONTACT ────────────────────────────── */
+    .form-field {
+      width:100%; padding:13px 16px;
+      border:1.5px solid #E5E7EB; border-radius:10px;
+      font-family:'DM Sans',sans-serif; font-size:.9rem; color:#1a1a1a;
+      background:white; outline:none;
+      transition:border-color .2s, box-shadow .2s;
+    }
+    .form-field:focus {
+      border-color:var(--gold-400);
+      box-shadow:0 0 0 3px rgba(212,168,75,.13);
+    }
+    .form-field::placeholder { color:#9CA3AF; }
+    textarea.form-field { resize:vertical; min-height:118px; }
+    .form-lbl {
+      display:block; font-size:.76rem; font-weight:600;
+      letter-spacing:.06em; text-transform:uppercase;
+      color:var(--navy-800); margin-bottom:6px;
+    }
+    .contact-info-item { display:flex; align-items:center; gap:14px; }
+    .ci-icon {
+      width:44px; height:44px; border-radius:12px; flex-shrink:0;
+      background:rgba(212,168,75,.12);
+      display:flex; align-items:center; justify-content:center;
+    }
+
+    /* ── FOOTER ─────────────────────────────── */
+    footer {
+      background:var(--navy-950);
+      border-top:1px solid rgba(212,168,75,.1);
+    }
+
+    /* ── FLOATING BADGE ─────────────────────── */
+    .float-badge { animation:float 4s ease-in-out infinite; }
+  </style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════
+     NAVBAR
+════════════════════════════════════════════ -->
+<nav id="navbar" role="navigation" aria-label="Main navigation">
+  <a href="#" aria-label="Braedon's Car Care home">
+    <img src="logo.png" alt="Braedon's Car Care" style="height:40px; width:40px; border-radius:50%; object-fit:cover;">
+  </a>
+
+  <div class="nav-links-desktop flex items-center gap-7">
+    <a href="#services"     class="nav-link">Services</a>
+    <a href="#gallery"      class="nav-link">Gallery</a>
+    <a href="#about"        class="nav-link">About</a>
+    <a href="#testimonials" class="nav-link">Reviews</a>
+    <a href="#area"         class="nav-link">Service Area</a>
+    <a href="#contact"      class="nav-cta nav-link">Book Now</a>
+  </div>
+
+  <button id="hamburger" aria-label="Open menu" aria-expanded="false"
+    class="flex flex-col gap-[5px] p-2 bg-transparent border-none cursor-pointer">
+    <span class="block w-6 h-[1.5px] bg-white rounded transition-all duration-300"></span>
+    <span class="block w-6 h-[1.5px] bg-white rounded transition-all duration-300"></span>
+    <span class="block w-4 h-[1.5px] bg-white rounded ml-auto transition-all duration-300"></span>
+  </button>
+</nav>
+
+<!-- Mobile Drawer -->
+<div id="mobile-drawer" role="dialog" aria-modal="true" aria-label="Navigation">
+  <button id="drawer-close" aria-label="Close menu"
+    class="absolute top-6 right-6 bg-transparent border-none cursor-pointer text-white p-2">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+      <path d="M18 6L6 18M6 6l12 12"/>
+    </svg>
+  </button>
+  <a href="#services"     onclick="closeDrawer()">Services</a>
+  <a href="#gallery"      onclick="closeDrawer()">Gallery</a>
+  <a href="#about"        onclick="closeDrawer()">About</a>
+  <a href="#testimonials" onclick="closeDrawer()">Reviews</a>
+  <a href="#area"         onclick="closeDrawer()">Service Area</a>
+  <a href="#contact" onclick="closeDrawer()" style="color:var(--gold-400)">Book Now</a>
+</div>
+
+
+<!-- ════════════════════════════════════════════
+     HERO
+════════════════════════════════════════════ -->
+<section id="hero" aria-label="Welcome to Braedon's Car Care">
+  <div class="hero-bg" id="hero-bg" aria-hidden="true">
+    <video autoplay muted loop playsinline preload="auto">
+      <source src="hero.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="hero-overlay" aria-hidden="true"></div>
+
+  <div class="hero-content w-full max-w-7xl mx-auto px-6 lg:px-14 pt-24">
+    <div class="max-w-[860px] mx-auto text-center">
+
+      <p class="eyebrow-tag" style="animation:fadeUp .8s ease both">
+        Braedon's Car Care
+      </p>
+
+      <h1 class="hero-h1 mt-5 mb-6" style="animation:fadeUp .8s ease .15s both">
+        Mobile &amp; In-Shop Auto Detailing in the Bay Area and Beyond
+      </h1>
+
+      <p class="hero-sub mb-9" style="animation:fadeUp .8s ease .3s both; max-width:620px; margin-left:auto; margin-right:auto;">
+        Experience your vehicle restored to that showroom feel, inside and out. We come to you or you come to us — water and power access required for mobile.
+      </p>
+
+      <div class="flex flex-wrap gap-4 justify-center" style="animation:fadeUp .8s ease .45s both">
+        <a href="#contact" class="btn-gold">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+            <rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>
+          </svg>
+          Book a Detail
+        </a>
+        <a href="#services" class="btn-outline-white">
+          View Services
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Scroll cue -->
+  <div class="scroll-cue" aria-hidden="true">
+    <div class="scroll-mouse"><div class="scroll-dot"></div></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+
+
+
+<!-- ════════════════════════════════════════════
+     OUR PROCESS
+════════════════════════════════════════════ -->
+<section id="process" class="py-24 bg-[#F8F7F4]" aria-labelledby="process-h2">
+  <div class="max-w-7xl mx-auto px-6 lg:px-14">
+
+    <div class="text-center mb-16 reveal">
+      <span class="sec-eye">How It Works</span>
+      <h2 id="process-h2" class="sec-h2">Our Process</h2>
+      <div class="gold-rule center"></div>
+    </div>
+
+    <div class="relative">
+
+      <!-- Connector line (desktop only) -->
+      <div class="hidden md:block absolute top-10 left-[12.5%] right-[12.5%] h-px" style="background:linear-gradient(90deg, transparent, var(--gold-400), var(--gold-400), var(--gold-400), transparent); opacity:.25;"></div>
+
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-6">
+
+        <!-- Step 1 -->
+        <div class="flex flex-col items-center text-center reveal d1">
+          <div class="relative mb-6">
+            <div class="w-20 h-20 rounded-full flex items-center justify-center" style="background:var(--navy-900);">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--gold-400)" stroke-width="1.7" aria-hidden="true">
+                <rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>
+              </svg>
+            </div>
+            <span class="absolute -top-1 -right-1 w-6 h-6 rounded-full text-xs font-bold flex items-center justify-center" style="background:var(--gold-400); color:var(--navy-900);">1</span>
+          </div>
+          <h3 class="font-semibold text-lg mb-2" style="font-family:'Cormorant Garamond',serif; font-size:1.4rem; color:var(--navy-900);">Booking</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">Just fill out the form, call, or shoot us a text. We'll lock in your time and answer anything you need.</p>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="flex flex-col items-center text-center reveal d2">
+          <div class="relative mb-6">
+            <div class="w-20 h-20 rounded-full flex items-center justify-center" style="background:var(--navy-900);">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--gold-400)" stroke-width="1.7" aria-hidden="true">
+                <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v3l2 2"/>
+              </svg>
+            </div>
+            <span class="absolute -top-1 -right-1 w-6 h-6 rounded-full text-xs font-bold flex items-center justify-center" style="background:var(--gold-400); color:var(--navy-900);">2</span>
+          </div>
+          <h3 class="font-semibold text-lg mb-2" style="font-family:'Cormorant Garamond',serif; font-size:1.4rem; color:var(--navy-900);">Vehicle Inspection</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">We take a good look at your car, note anything that needs extra attention, and talk you through what we're going to do.</p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="flex flex-col items-center text-center reveal d3">
+          <div class="relative mb-6">
+            <div class="w-20 h-20 rounded-full flex items-center justify-center" style="background:var(--navy-900);">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--gold-400)" stroke-width="1.7" aria-hidden="true">
+                <path d="M12 22V12M12 12C12 12 7 9 7 5a5 5 0 0110 0c0 4-5 7-5 7z"/>
+              </svg>
+            </div>
+            <span class="absolute -top-1 -right-1 w-6 h-6 rounded-full text-xs font-bold flex items-center justify-center" style="background:var(--gold-400); color:var(--navy-900);">3</span>
+          </div>
+          <h3 class="font-semibold text-lg mb-2" style="font-family:'Cormorant Garamond',serif; font-size:1.4rem; color:var(--navy-900);">The Detail</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">We get to work and don't cut corners. Every surface, every gap, every inch until it looks exactly how it should.</p>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="flex flex-col items-center text-center reveal d4">
+          <div class="relative mb-6">
+            <div class="w-20 h-20 rounded-full flex items-center justify-center" style="background:var(--navy-900);">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--gold-400)" stroke-width="1.7" aria-hidden="true">
+                <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 000-7.78z"/>
+              </svg>
+            </div>
+            <span class="absolute -top-1 -right-1 w-6 h-6 rounded-full text-xs font-bold flex items-center justify-center" style="background:var(--gold-400); color:var(--navy-900);">4</span>
+          </div>
+          <h3 class="font-semibold text-lg mb-2" style="font-family:'Cormorant Garamond',serif; font-size:1.4rem; color:var(--navy-900);">Happy Customer</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">You leave with a car that feels brand new. We won't call it done until you're genuinely happy.</p>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════
+     SERVICES
+════════════════════════════════════════════ -->
+<section id="services" class="py-24 bg-[#F8F7F4]" aria-labelledby="services-h2">
+  <div class="max-w-7xl mx-auto px-6 lg:px-14">
+
+    <div class="mb-16 reveal">
+      <span class="sec-eye">What We Offer</span>
+      <h2 id="services-h2" class="sec-h2">Packages &amp; Add-Ons</h2>
+      <div class="gold-rule"></div>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6 items-start">
+
+      <!-- EXTERIOR WASH -->
+      <article class="svc-card reveal d1">
+        <div class="svc-icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D4A84B" stroke-width="1.8">
+            <path d="M12 22V12M12 12C12 12 7 9 7 5a5 5 0 0110 0c0 4-5 7-5 7z"/>
+          </svg>
+        </div>
+        <h3 class="svc-name">Basic Exterior Detail</h3>
+        <p class="svc-desc">A full exterior clean from top to bottom. Your paint will look sharp and stay protected.</p>
+        <div class="svc-price">From $79.99 <small>/ sedan</small></div>
+        <p style="font-size:.78rem; color:#9CA3AF; margin-top:-12px; margin-bottom:18px;">Price varies for larger vehicles</p>
+        <ul class="svc-feats">
+          <li class="svc-li"><span class="li-dot" aria-hidden="true"></span>Full exterior hand wash &amp; dry</li>
+          <li class="svc-li"><span class="li-dot" aria-hidden="true"></span>Wheel &amp; tire cleaning</li>
+          <li class="svc-li"><span class="li-dot" aria-hidden="true"></span>Window &amp; glass clean</li>
+          <li class="svc-li"><span class="li-dot" aria-hidden="true"></span>Trim &amp; door jamb wipe-down</li>
+          <li class="svc-li"><span class="li-dot" aria-hidden="true"></span>Paint sealant application</li>
+        </ul>
+        <a href="#contact" class="btn-card btn-card-dark">Book Exterior Detail</a>
+      </article>
+
+      <!-- FULL DETAIL BUNDLE (featured) -->
+      <article class="svc-card featured reveal d2">
+        <span class="svc-badge">Best Value</span>
+        <div class="svc-icon" style="background:rgba(212,168,75,.14)" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D4A84B" stroke-width="1.8">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+          </svg>
+        </div>
+        <h3 class="svc-name">Full Detail Bundle</h3>
+        <p class="svc-desc">The full package inside and out. Best value if you want the whole car done right.</p>
+        <div>
+          <div class="svc-price">From $179.99 <small style="color:rgba(255,255,255,.4)">/ sedan</small></div>
+          <p style="font-size:.78rem; color:rgba(255,255,255,.4); margin-top:-12px; margin-bottom:18px;">
+            Save $20 when you bundle. Price varies for larger vehicles.
+          </p>
+        </div>
+        <ul class="svc-feats">
+          <li class="svc-li"><span class="li-dot" aria-hidden="true"></span>Full exterior detail (above)</li>
+          <li class="svc-li"><span class="li-dot" aria-hidden="true"></span>Thorough interior vacuum &amp; blowout</li>
+          <li class="svc-li"><span class="li-dot" aria-hidden="true"></span>Plastic &amp; trim wipe-down</li>
+          <li class="svc-li"><span class="li-dot" aria-hidden="true"></span>Interior glass &amp; mirror clean</li>
+          <li class="svc-li"><span class="li-dot" aria-hidden="true"></span>Door panels &amp; console detail</li>
+          <li class="svc-li"><span class="li-dot" aria-hidden="true"></span>Plastic, leather &amp; rubber dressing</li>
+        </ul>
+        <a href="#contact" class="btn-card btn-card-gold">Book Full Detail</a>
+      </article>
+
+      <!-- STANDARD INTERIOR -->
+      <article class="svc-card reveal d3">
+        <div class="svc-icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D4A84B" stroke-width="1.8">
+            <rect x="3" y="3" width="18" height="18" rx="3"/>
+            <path d="M3 9h18M9 21V9"/>
+          </svg>
+        </div>
+        <h3 class="svc-name">Standard Interior Detail</h3>
+        <p class="svc-desc">A deep clean of everything inside your car. Fresh, spotless, and actually clean this time.</p>
+        <div class="svc-price">From $119.99 <small>/ sedan</small></div>
+        <p style="font-size:.78rem; color:#9CA3AF; margin-top:-12px; margin-bottom:18px;">Price varies for larger vehicles</p>
+        <ul class="svc-feats">
+          <li class="svc-li"><span class="li-dot" aria-hidden="true"></span>Full blowout &amp; deep vacuum</li>
+          <li class="svc-li"><span class="li-dot" aria-hidden="true"></span>Plastic, trim &amp; dash wipe-down</li>
+          <li class="svc-li"><span class="li-dot" aria-hidden="true"></span>Door panels &amp; console clean</li>
+          <li class="svc-li"><span class="li-dot" aria-hidden="true"></span>Interior windows &amp; mirrors</li>
+          <li class="svc-li"><span class="li-dot" aria-hidden="true"></span>Floor mats cleaned &amp; dressed</li>
+          <li class="svc-li"><span class="li-dot" aria-hidden="true"></span>Plastic, leather &amp; rubber dressing</li>
+        </ul>
+        <a href="#contact" class="btn-card btn-card-dark">Book Interior Detail</a>
+      </article>
+
+    </div>
+
+    <!-- Add-ons -->
+    <div class="mt-14 reveal">
+      <p class="text-center text-xs font-semibold tracking-widest uppercase text-gray-400 mb-6">Available Add-Ons</p>
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-3xl mx-auto">
+        <div class="bg-white rounded-2xl px-5 py-4 border border-gray-100 text-center hover:border-[#D4A84B]/30 hover:shadow-md transition-all cursor-default">
+          <div class="text-[var(--navy-900)] font-semibold text-sm mb-1">Steam Cleaning</div>
+          <div class="text-[var(--gold-500)] font-semibold text-sm">$39.99</div>
+        </div>
+        <div class="bg-white rounded-2xl px-5 py-4 border border-gray-100 text-center hover:border-[#D4A84B]/30 hover:shadow-md transition-all cursor-default">
+          <div class="text-[var(--navy-900)] font-semibold text-sm mb-1">Clay &amp; Sealant</div>
+          <div class="text-[var(--gold-500)] font-semibold text-sm">$49.99</div>
+        </div>
+        <div class="bg-white rounded-2xl px-5 py-4 border border-gray-100 text-center hover:border-[#D4A84B]/30 hover:shadow-md transition-all cursor-default">
+          <div class="text-[var(--navy-900)] font-semibold text-sm mb-1">Shampoo &amp; Stain Extraction</div>
+          <div class="text-[var(--gold-500)] font-semibold text-sm">From $49.99</div>
+        </div>
+        <div class="bg-white rounded-2xl px-5 py-4 border border-gray-100 text-center hover:border-[#D4A84B]/30 hover:shadow-md transition-all cursor-default">
+          <div class="text-[var(--navy-900)] font-semibold text-sm mb-1">Pet Hair Removal</div>
+          <div class="text-[var(--gold-500)] font-semibold text-sm">From $49.99</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center mt-10 reveal">
+      <p class="text-gray-500 text-[0.95rem] font-medium mb-4">Not sure what your car needs? Just reach out and we'll figure it out together.</p>
+      <div class="flex flex-wrap justify-center gap-3">
+        <a href="#contact" class="btn-gold" style="font-size:.875rem; padding:12px 24px;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+            <rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>
+          </svg>
+          Book Now
+        </a>
+        <a href="tel:+16502193149" class="btn-outline-dark" style="font-size:.875rem; padding:12px 24px;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 12a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1.13h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+          </svg>
+          Call or Text Us
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════
+     GALLERY
+════════════════════════════════════════════ -->
+<section id="gallery" class="py-24" style="background:var(--navy-900)" aria-labelledby="gallery-h2">
+  <div class="max-w-5xl mx-auto px-6 lg:px-14">
+
+    <div class="mb-14 reveal">
+      <span class="sec-eye light">Our Work &bull; Real Results</span>
+      <h2 id="gallery-h2" class="sec-h2 light">Gallery</h2>
+      <div class="gold-rule"></div>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+      <div class="reveal d1"><div class="rounded-[18px] overflow-hidden" style="height:240px; background:var(--navy-800);"><video src="video.mov" autoplay muted loop playsinline preload="metadata" aria-label="Car detailing clip" class="w-full h-full object-cover"></video></div></div>
+      <div class="reveal d2"><div class="rounded-[18px] overflow-hidden" style="height:240px; background:var(--navy-800);"><video src="video2.mov" autoplay muted loop playsinline preload="metadata" aria-label="Car detailing clip" class="w-full h-full object-cover"></video></div></div>
+      <div class="reveal d3"><div class="rounded-[18px] overflow-hidden" style="height:240px; background:var(--navy-800);"><video src="v3.mov" autoplay muted loop playsinline preload="metadata" aria-label="Car detailing clip" class="w-full h-full object-cover"></video></div></div>
+      <div class="reveal d1"><div class="rounded-[18px] overflow-hidden" style="height:240px; background:var(--navy-800);"><video src="v4.mov" autoplay muted loop playsinline preload="metadata" aria-label="Car detailing clip" class="w-full h-full object-cover"></video></div></div>
+      <div class="reveal d2"><div class="rounded-[18px] overflow-hidden" style="height:240px; background:var(--navy-800);"><video src="v5.mov" autoplay muted loop playsinline preload="metadata" aria-label="Car detailing clip" class="w-full h-full object-cover"></video></div></div>
+      <div class="reveal d3"><div class="rounded-[18px] overflow-hidden" style="height:240px; background:var(--navy-800);"><video src="v6.mov" autoplay muted loop playsinline preload="metadata" aria-label="Car detailing clip" class="w-full h-full object-cover"></video></div></div>
+      <div class="reveal d1"><div class="rounded-[18px] overflow-hidden" style="height:240px; background:var(--navy-800);"><video src="v7.mov" autoplay muted loop playsinline preload="metadata" aria-label="Car detailing clip" class="w-full h-full object-cover"></video></div></div>
+      <div class="reveal d2"><div class="rounded-[18px] overflow-hidden" style="height:240px; background:var(--navy-800);"><video src="v8.mov" autoplay muted loop playsinline preload="metadata" aria-label="Car detailing clip" class="w-full h-full object-cover"></video></div></div>
+      <div class="reveal d3"><div class="rounded-[18px] overflow-hidden" style="height:240px; background:var(--navy-800);"><video src="v9.mov" autoplay muted loop playsinline preload="metadata" aria-label="Car detailing clip" class="w-full h-full object-cover"></video></div></div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════
+     ABOUT
+════════════════════════════════════════════ -->
+<section id="about" class="py-24 bg-[#F8F7F4]" aria-labelledby="about-h2">
+  <div class="max-w-7xl mx-auto px-6 lg:px-14">
+    <div class="grid md:grid-cols-2 gap-16 items-center">
+
+      <!-- Photos -->
+      <div class="relative reveal-left grid grid-cols-2 gap-3">
+        <div class="aspect-[3/4] rounded-[18px] overflow-hidden"
+             style="background:var(--navy-800)">
+          <img src="braedon1.jpg" alt="Braedon at the beach at sunset"
+               class="w-full h-full object-cover" loading="lazy" />
+        </div>
+        <div class="aspect-[3/4] rounded-[18px] overflow-hidden mt-8"
+             style="background:var(--navy-800)">
+          <img src="braedon2.jpg" alt="Braedon overlooking the Bay Area at sunset"
+               class="w-full h-full object-cover" loading="lazy" />
+        </div>
+      </div>
+
+      <!-- Copy -->
+      <div class="reveal-right">
+        <span class="sec-eye">Meet Braedon</span>
+        <h2 id="about-h2" class="sec-h2 mb-6">
+          Real Care for Your Vehicle — My Story
+        </h2>
+        <div class="gold-rule mb-8"></div>
+
+        <p class="text-gray-600 leading-relaxed text-[0.945rem] mb-5">
+          I'm Braedon. Back during COVID, I was a full-on germophobe. My room had to be spotless, everything in its place, not a single thing out of order. That level of meticulousness stuck with me, and over time it naturally shifted into something I'm actually proud of: an obsession with clean cars.
+        </p>
+        <p class="text-gray-600 leading-relaxed text-[0.945rem] mb-5">
+          I don't carry the same germophobe energy these days, but that same eye for detail and zero tolerance for "good enough" absolutely carries over into every detail I do. When I'm working on your car, I treat it like it's mine.
+        </p>
+        <p class="text-gray-600 leading-relaxed text-[0.945rem] mb-9">
+          I'm heading to Santa Clara University this fall, but this business is real and it's not going anywhere. I show up on time, I work hard, and I don't leave until the job's done right. I'm building this one happy customer at a time and I'd love to earn yours.
+        </p>
+
+        <div class="flex flex-col gap-4 mb-9">
+          <div class="contact-info-item">
+            <div class="ci-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D4A84B" stroke-width="2" aria-hidden="true">
+                <path d="M12 2a10 10 0 100 20A10 10 0 0012 2z"/>
+                <path d="M12 6v6l4 2"/>
+              </svg>
+            </div>
+            <span class="text-sm font-medium" style="color:var(--navy-900)">Professional-Grade Equipment & Products</span>
+          </div>
+          <div class="contact-info-item">
+            <div class="ci-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D4A84B" stroke-width="2" aria-hidden="true">
+                <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 000-7.78z"/>
+              </svg>
+            </div>
+            <span class="text-sm font-medium" style="color:var(--navy-900)">100% Satisfaction Guaranteed</span>
+          </div>
+        </div>
+
+        <a href="#contact" class="btn-gold">
+          Get in Touch
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════
+     TESTIMONIALS
+════════════════════════════════════════════ -->
+<section id="testimonials" class="py-24 bg-white" aria-labelledby="reviews-h2">
+  <div class="max-w-7xl mx-auto px-6 lg:px-14">
+
+    <div class="text-center mb-16 reveal">
+      <span class="sec-eye">Client Reviews</span>
+      <h2 id="reviews-h2" class="sec-h2">5 Stars Across<br>the Bay Area</h2>
+      <div class="gold-rule center"></div>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+
+      <article class="review-card reveal d1">
+        <div class="flex gap-1 mb-4" aria-label="5 out of 5 stars">
+          <svg class="star-svg" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="star-svg" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="star-svg" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="star-svg" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="star-svg" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="rev-text">"Quality of the detailing work inside and out is incredible as is the value. Appreciate the exceptional attention to detail. Braedon's a pro."</p>
+        <div class="rev-author">
+          <div class="rev-avatar" aria-hidden="true">LF</div>
+          <div>
+            <div class="rev-name">Luke Felker</div>
+            <div class="rev-loc">Presidio, SF</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="review-card reveal d2">
+        <div class="flex gap-1 mb-4" aria-label="5 out of 5 stars">
+          <svg class="star-svg" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="star-svg" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="star-svg" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="star-svg" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="star-svg" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="rev-text">"Braedon is going to be my go-to for detailing our car from now on. He was very professional, was willing to drive out to us with all of his equipment, and did an exceptional job with our car. He thought of every last detail and meticulously clean every inch of the car, and he did it for a great price! To give you an idea of what a great job he does, when my neighbors saw him working on our car, they texted me asking for his info. I highly recommend hiring Braedon to detail your car ASAP."</p>
+        <div class="rev-author">
+          <div class="rev-avatar" aria-hidden="true">MD</div>
+          <div>
+            <div class="rev-name">Max DeWan</div>
+            <div class="rev-loc">Presidio, SF</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="review-card reveal d3">
+        <div class="flex gap-1 mb-4" aria-label="5 out of 5 stars">
+          <svg class="star-svg" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="star-svg" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="star-svg" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="star-svg" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="star-svg" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="rev-text">"I own a Mercedes c230 and never gotten it professionally detailed, hence, its very dirty with lot's of stains and crumbs. I got the premium interior package including steam cleaning and carpet extraction. Braedon was able to remove years of piled up dirt and stains in seats. I am thoroughly impressed 5/5 😁"</p>
+        <div class="rev-author">
+          <div class="rev-avatar" aria-hidden="true">JC</div>
+          <div>
+            <div class="rev-name">Joshua Chiu</div>
+            <div class="rev-loc">South San Francisco, CA</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="review-card reveal d1">
+        <div class="flex gap-1 mb-4" aria-label="5 out of 5 stars">
+          <svg class="star-svg" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="star-svg" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="star-svg" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="star-svg" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="star-svg" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="rev-text">"I had my car deep cleaned and was really impressed with the results. Braedon did a thorough job inside and out, paying attention to every detail and leaving the car looking and feeling brand new. As a nice surprise, he even added a car freshener a thoughtful touch. I'd definitely recommend him to anyone looking for a quality detail."</p>
+        <div class="rev-author">
+          <div class="rev-avatar" aria-hidden="true">SZ</div>
+          <div>
+            <div class="rev-name">Sally Zeidan</div>
+            <div class="rev-loc">South San Francisco, CA</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="review-card reveal d2">
+        <div class="flex gap-1 mb-4" aria-label="5 out of 5 stars">
+          <svg class="star-svg" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="star-svg" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="star-svg" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="star-svg" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="star-svg" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="rev-text">"10/10 he was very enthusiastic. Service was excellent. We had an inside and outside done for two cars and he even gave a ceramic sealant for free. Thank you, I would strongly recommend this service!"</p>
+        <div class="rev-author">
+          <div class="rev-avatar" aria-hidden="true">EH</div>
+          <div>
+            <div class="rev-name">Erik Hoeft</div>
+            <div class="rev-loc">Pacific Heights, SF</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="review-card reveal d3">
+        <div class="flex gap-1 mb-4" aria-label="5 out of 5 stars">
+          <svg class="star-svg" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="star-svg" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="star-svg" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="star-svg" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="star-svg" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="rev-text">"Braedon is amazing. He's incredibly diligent and did an amazing job highly recommend!"</p>
+        <div class="rev-author">
+          <div class="rev-avatar" aria-hidden="true">CW</div>
+          <div>
+            <div class="rev-name">Casey Woo</div>
+            <div class="rev-loc">Marin County, CA</div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- Google badge -->
+    <div class="flex justify-center mt-12 reveal">
+      <div class="flex items-center gap-4 rounded-2xl px-6 py-4 border border-gray-100"
+           style="background:#F8F7F4">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-label="Google logo" role="img">
+          <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+          <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+          <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
+          <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+        </svg>
+        <div>
+          <div class="flex items-center gap-1.5">
+            <span class="font-semibold text-[var(--navy-900)] text-sm">5.0</span>
+            <div class="flex gap-0.5" aria-hidden="true">
+              <svg class="star-svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="star-svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="star-svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="star-svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="star-svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </div>
+          </div>
+          <div class="text-gray-400 text-xs mt-0.5">10+ Google Reviews</div>
+          <a href="https://share.google/aXyYqdD5AmcV4mLOx" target="_blank" rel="noopener noreferrer"
+             class="text-[#B8922F] text-xs font-medium hover:underline mt-1 inline-block">
+            Read reviews →
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════
+     SERVICE AREA
+════════════════════════════════════════════ -->
+<section id="area" class="py-24" style="background:var(--navy-900)" aria-labelledby="area-h2">
+  <div class="max-w-7xl mx-auto px-6 lg:px-14">
+
+    <div class="text-center mb-14 reveal">
+      <span class="sec-eye light">Mobile &amp; In-Shop</span>
+      <h2 id="area-h2" class="sec-h2 light">Serving the Entire<br>Bay Area</h2>
+      <div class="gold-rule center"></div>
+    </div>
+
+    <div class="flex flex-wrap justify-center gap-3 max-w-3xl mx-auto">
+      <span class="city-pill reveal d1">South San Francisco</span>
+      <span class="city-pill reveal d1">San Francisco</span>
+      <span class="city-pill reveal d2">Daly City</span>
+      <span class="city-pill reveal d2">Pacifica</span>
+      <span class="city-pill reveal d3">Millbrae</span>
+      <span class="city-pill reveal d3">Burlingame</span>
+      <span class="city-pill reveal d1">San Mateo</span>
+      <span class="city-pill reveal d2">Foster City</span>
+      <span class="city-pill reveal d3">Redwood City</span>
+      <span class="city-pill reveal d1">Menlo Park</span>
+      <span class="city-pill reveal d2">Palo Alto</span>
+      <span class="city-pill reveal d3">Oakland</span>
+      <span class="city-pill reveal d1">Berkeley</span>
+      <span class="city-pill reveal d2">Alameda</span>
+      <span class="city-pill reveal d3">Marin County</span>
+    </div>
+
+    <p class="text-center text-white/35 text-sm mt-10 reveal">
+      Mobile service requires access to water &amp; power at your location.&nbsp;
+      Prefer to come to us? <a href="#contact" class="hover:underline cursor-pointer" style="color:var(--gold-400)">Ask about in-shop availability →</a>
+    </p>
+
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════
+     CONTACT
+════════════════════════════════════════════ -->
+<section id="contact" class="py-24 bg-[#F8F7F4]" aria-labelledby="contact-h2">
+  <div class="max-w-7xl mx-auto px-6 lg:px-14">
+
+    <div class="grid md:grid-cols-2 gap-16 items-start">
+
+      <!-- Left: info -->
+      <div class="reveal-left">
+        <span class="sec-eye">Get in Touch</span>
+        <h2 id="contact-h2" class="sec-h2 mb-4">Book Your Detail<br>Today</h2>
+        <div class="gold-rule mb-8"></div>
+
+        <p class="text-gray-500 text-[0.94rem] leading-relaxed mb-10">
+          Ready to get your car cleaned up? We do both in-shop and mobile. For mobile, just make sure there's water and a power outlet nearby. Fill out the form or reach out directly and we'll get back to you within a few hours.
+        </p>
+
+        <div class="flex flex-col gap-6">
+
+          <div class="contact-info-item">
+            <div class="ci-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D4A84B" stroke-width="2" aria-hidden="true">
+                <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 12a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1.13h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+              </svg>
+            </div>
+            <div>
+              <div class="text-xs font-semibold tracking-widest uppercase text-gray-400 mb-0.5">Call or Text</div>
+              <a href="tel:+16502193149" class="text-[var(--navy-900)] font-semibold text-[1.05rem] hover:text-[var(--gold-500)] transition-colors">
+                650-219-3149
+              </a>
+            </div>
+          </div>
+
+          <div class="contact-info-item">
+            <div class="ci-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D4A84B" stroke-width="2" aria-hidden="true">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
+              </svg>
+            </div>
+            <div>
+              <div class="text-xs font-semibold tracking-widest uppercase text-gray-400 mb-0.5">Email</div>
+              <a href="mailto:braedonscarcare@gmail.com"
+                 class="text-[var(--navy-900)] font-semibold text-[1.05rem] hover:text-[var(--gold-500)] transition-colors break-all">
+                braedonscarcare@gmail.com
+              </a>
+            </div>
+          </div>
+
+          <div class="contact-info-item" style="align-items:flex-start">
+            <div class="ci-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D4A84B" stroke-width="2" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>
+              </svg>
+            </div>
+            <div>
+              <div class="text-xs font-semibold tracking-widest uppercase text-gray-400 mb-1.5">Hours</div>
+              <div class="flex flex-col gap-0.5 text-[0.9rem]">
+                <div class="flex justify-between gap-8"><span class="text-gray-500">Mon</span><span class="font-medium" style="color:var(--navy-900)">7:00am – 7:00pm</span></div>
+                <div class="flex justify-between gap-8"><span class="text-gray-500">Tue</span><span class="font-medium" style="color:var(--navy-900)">7:00am – 7:00pm</span></div>
+                <div class="flex justify-between gap-8"><span class="text-gray-500">Wed</span><span class="font-medium" style="color:var(--navy-900)">7:00am – 7:00pm</span></div>
+                <div class="flex justify-between gap-8"><span class="text-gray-500">Thu</span><span class="font-medium" style="color:var(--navy-900)">7:00am – 7:00pm</span></div>
+                <div class="flex justify-between gap-8"><span class="text-gray-500">Fri</span><span class="font-medium" style="color:var(--navy-900)">7:00am – 7:00pm</span></div>
+                <div class="flex justify-between gap-8"><span class="text-gray-500">Sat</span><span class="font-medium" style="color:var(--navy-900)">7:00am – 12:00pm &amp; 3:00 – 7:00pm</span></div>
+                <div class="flex justify-between gap-8"><span class="text-gray-500">Sun</span><span class="font-medium" style="color:var(--navy-900)">1:00pm – 7:00pm</span></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Right: form -->
+      <div class="reveal-right">
+        <form id="contact-form" class="bg-[#162032] rounded-[22px] p-8 shadow-sm border border-gray-100/80"
+              onsubmit="handleSubmit(event)" novalidate>
+
+          <div class="grid sm:grid-cols-2 gap-5 mb-5">
+            <div>
+              <label class="form-lbl" for="f-name">Your Name</label>
+              <input id="f-name" name="name" type="text" class="form-field"
+                     placeholder="Braedon Smith" required autocomplete="name">
+            </div>
+            <div>
+              <label class="form-lbl" for="f-phone">Phone / Email</label>
+              <input id="f-phone" name="contact" type="text" class="form-field"
+                     placeholder="(415) 555-0100" required autocomplete="tel">
+            </div>
+          </div>
+
+          <div class="mb-5">
+            <label class="form-lbl">Services Interested In</label>
+            <div class="rounded-[10px] border border-[#E5E7EB] bg-white p-4 flex flex-col gap-3">
+              <p class="text-[.68rem] font-semibold tracking-widest uppercase text-gray-400 mb-1">Packages</p>
+              <label class="flex items-center gap-3 cursor-pointer group">
+                <input type="checkbox" name="service" value="Basic Exterior Detail ($79.99+)" class="w-4 h-4 accent-[#D4A84B] cursor-pointer">
+                <span class="text-sm text-gray-700 group-hover:text-[var(--navy-900)] transition-colors">Basic Exterior Detail <span class="text-gray-400 font-normal">from $79.99</span></span>
+              </label>
+              <label class="flex items-center gap-3 cursor-pointer group">
+                <input type="checkbox" name="service" value="Standard Interior Detail ($119.99+)" class="w-4 h-4 accent-[#D4A84B] cursor-pointer">
+                <span class="text-sm text-gray-700 group-hover:text-[var(--navy-900)] transition-colors">Standard Interior Detail <span class="text-gray-400 font-normal">from $119.99</span></span>
+              </label>
+              <label class="flex items-center gap-3 cursor-pointer group">
+                <input type="checkbox" name="service" value="Full Detail Bundle ($179.99+)" class="w-4 h-4 accent-[#D4A84B] cursor-pointer">
+                <span class="text-sm text-gray-700 group-hover:text-[var(--navy-900)] transition-colors">Full Detail Bundle <span class="text-gray-400 font-normal">from $179.99 (save $20)</span></span>
+              </label>
+              <p class="text-[.68rem] font-semibold tracking-widest uppercase text-gray-400 mt-2 mb-1">Add-Ons</p>
+              <label class="flex items-center gap-3 cursor-pointer group">
+                <input type="checkbox" name="service" value="Steam Cleaning ($39.99)" class="w-4 h-4 accent-[#D4A84B] cursor-pointer">
+                <span class="text-sm text-gray-700 group-hover:text-[var(--navy-900)] transition-colors">Steam Cleaning <span class="text-gray-400 font-normal">$39.99</span></span>
+              </label>
+              <label class="flex items-center gap-3 cursor-pointer group">
+                <input type="checkbox" name="service" value="Clay & Sealant ($49.99)" class="w-4 h-4 accent-[#D4A84B] cursor-pointer">
+                <span class="text-sm text-gray-700 group-hover:text-[var(--navy-900)] transition-colors">Clay &amp; Sealant <span class="text-gray-400 font-normal">$49.99</span></span>
+              </label>
+              <label class="flex items-center gap-3 cursor-pointer group">
+                <input type="checkbox" name="service" value="Shampoo & Stain Extraction ($49.99+)" class="w-4 h-4 accent-[#D4A84B] cursor-pointer">
+                <span class="text-sm text-gray-700 group-hover:text-[var(--navy-900)] transition-colors">Shampoo &amp; Stain Extraction <span class="text-gray-400 font-normal">from $49.99</span></span>
+              </label>
+              <label class="flex items-center gap-3 cursor-pointer group">
+                <input type="checkbox" name="service" value="Pet Hair Removal ($49.99+)" class="w-4 h-4 accent-[#D4A84B] cursor-pointer">
+                <span class="text-sm text-gray-700 group-hover:text-[var(--navy-900)] transition-colors">Pet Hair Removal <span class="text-gray-400 font-normal">from $49.99</span></span>
+              </label>
+            </div>
+          </div>
+
+          <div class="mb-5">
+            <label class="form-lbl" for="f-vehicle">Vehicle</label>
+            <input id="f-vehicle" name="vehicle" type="text" class="form-field"
+                   placeholder="2022 Tesla Model 3" autocomplete="off">
+          </div>
+
+          <div class="mb-6">
+            <label class="form-lbl" for="f-msg">Message (optional)</label>
+            <textarea id="f-msg" name="message" class="form-field"
+                      placeholder="Any additional details, preferred date/time, or questions…"></textarea>
+          </div>
+
+          <button type="submit" class="btn-gold w-full justify-center text-base" id="form-submit">
+            Send Booking Request
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+              <path d="M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z"/>
+            </svg>
+          </button>
+
+          <!-- Success state (hidden) -->
+          <div id="form-success" class="hidden text-center py-4">
+            <div class="text-2xl mb-2">
+              <svg class="inline w-10 h-10" viewBox="0 0 24 24" fill="none" stroke="#D4A84B" stroke-width="2" aria-hidden="true">
+                <path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/>
+              </svg>
+            </div>
+            <p class="font-semibold text-[var(--navy-900)]">Request sent!</p>
+            <p class="text-sm text-gray-500 mt-1">We'll be in touch within a few hours.</p>
+          </div>
+
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════ -->
+<footer class="py-12 px-6" aria-label="Footer">
+  <div class="max-w-7xl mx-auto">
+    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
+
+      <div>
+        <img src="logo.png" alt="Braedon's Car Care" style="height:44px; width:44px; border-radius:50%; object-fit:cover; margin-bottom:8px;">
+        <p class="text-white/35 text-sm">Mobile &amp; In-Shop Detailing · Bay Area, California</p>
+      </div>
+
+      <nav class="flex flex-wrap gap-6" aria-label="Footer navigation">
+        <a href="#services"     class="text-white/50 text-sm hover:text-white transition-colors">Services</a>
+        <a href="#gallery"      class="text-white/50 text-sm hover:text-white transition-colors">Gallery</a>
+        <a href="#about"        class="text-white/50 text-sm hover:text-white transition-colors">About</a>
+        <a href="#testimonials" class="text-white/50 text-sm hover:text-white transition-colors">Reviews</a>
+        <a href="#contact"      class="text-white/50 text-sm hover:text-white transition-colors">Contact</a>
+      </nav>
+
+      <a href="#contact" class="btn-gold self-start md:self-auto" style="font-size:.85rem; padding:11px 22px">
+        Book Now
+      </a>
+
+    </div>
+
+    <div class="border-t border-white/8 mt-10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-3">
+      <p class="text-white/25 text-xs">&copy; 2025 Braedon's Car Care. All rights reserved.</p>
+      <a href="https://www.instagram.com/braedonscarcare" target="_blank" rel="noopener noreferrer"
+         class="flex items-center gap-2 text-white/40 hover:text-white/80 transition-colors text-xs">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+          <rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+        </svg>
+        @braedonscarcare
+      </a>
+      <p class="text-white/25 text-xs">Bay Area, California</p>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ════════════════════════════════════════════
+     JAVASCRIPT
+════════════════════════════════════════════ -->
+<script>
+// ── Navbar scroll ─────────────────────────
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 40);
+}, { passive: true });
+
+// ── Mobile drawer ─────────────────────────
+const hamburger = document.getElementById('hamburger');
+const drawer    = document.getElementById('mobile-drawer');
+const drawerClose = document.getElementById('drawer-close');
+
+function openDrawer()  {
+  drawer.classList.add('open');
+  hamburger.setAttribute('aria-expanded','true');
+  document.body.style.overflow = 'hidden';
+}
+function closeDrawer() {
+  drawer.classList.remove('open');
+  hamburger.setAttribute('aria-expanded','false');
+  document.body.style.overflow = '';
+}
+hamburger.addEventListener('click', openDrawer);
+drawerClose.addEventListener('click', closeDrawer);
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDrawer(); });
+
+// ── Scroll reveal (Intersection Observer) ─
+const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(el => {
+    if (el.isIntersecting) {
+      el.target.classList.add('visible');
+      // Gold rules
+      el.target.querySelectorAll('.gold-rule').forEach(r => r.classList.add('visible'));
+      observer.unobserve(el.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+revealEls.forEach(el => observer.observe(el));
+
+// Also observe gold-rules that are direct siblings
+document.querySelectorAll('.gold-rule').forEach(rule => {
+  const io = new IntersectionObserver(([e]) => {
+    if (e.isIntersecting) { rule.classList.add('visible'); io.unobserve(rule); }
+  }, { threshold: 0.5 });
+  io.observe(rule);
+});
+
+// ── Animated counters ─────────────────────
+function animateCount(el, target, duration = 1600) {
+  let start = null;
+  const step = (ts) => {
+    if (!start) start = ts;
+    const progress = Math.min((ts - start) / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+    el.textContent = Math.floor(eased * target) + (target >= 100 ? '+' : '');
+    if (progress < 1) requestAnimationFrame(step);
+    else el.textContent = target + '+';
+  };
+  requestAnimationFrame(step);
+}
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const el = entry.target;
+      const target = parseInt(el.dataset.count);
+      animateCount(el, target);
+      counterObserver.unobserve(el);
+    }
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('[data-count]').forEach(el => counterObserver.observe(el));
+
+// ── Hero parallax ─────────────────────────
+const heroBg = document.getElementById('hero-bg');
+if (heroBg && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    if (y < window.innerHeight * 1.5) {
+      heroBg.style.transform = `translateY(${y * 0.35}px)`;
+    }
+  }, { passive: true });
+}
+
+// ── Before / After Slider ─────────────────
+function baMove(afterId, lineId, val) {
+  const pct = parseInt(val);
+  const inset = 100 - pct;
+  document.getElementById(afterId).style.clipPath = `inset(0 ${inset}% 0 0)`;
+  document.getElementById(lineId).style.marginLeft = pct + '%';
+}
+
+// Init extra sliders
+['ba3-after','ba4-after'].forEach(id => {
+  const el = document.getElementById(id);
+  if (el) el.style.clipPath = 'inset(0 50% 0 0)';
+});
+
+// Touch support for B/A sliders
+document.querySelectorAll('.ba-wrap').forEach(wrap => {
+  const rangeInput = wrap.querySelector('.ba-range');
+  wrap.addEventListener('touchmove', (e) => {
+    const rect = wrap.getBoundingClientRect();
+    const x = e.touches[0].clientX - rect.left;
+    const pct = Math.max(0, Math.min(100, (x / rect.width) * 100));
+    rangeInput.value = pct;
+    rangeInput.dispatchEvent(new Event('input'));
+  }, { passive: true });
+  wrap.addEventListener('mousemove', (e) => {
+    if (e.buttons !== 1) return;
+    const rect = wrap.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const pct = Math.max(0, Math.min(100, (x / rect.width) * 100));
+    rangeInput.value = pct;
+    rangeInput.dispatchEvent(new Event('input'));
+  });
+});
+
+// ── Form submit ───────────────────────────
+async function handleSubmit(e) {
+  e.preventDefault();
+  const form    = document.getElementById('contact-form');
+  const btn     = document.getElementById('form-submit');
+  const success = document.getElementById('form-success');
+
+  btn.disabled = true;
+  btn.textContent = 'Sending…';
+  btn.style.opacity = '.7';
+
+  const services = [...form.querySelectorAll('input[name="service"]:checked')]
+    .map(cb => cb.value);
+
+  const payload = {
+    name:    form.querySelector('#f-name').value,
+    contact: form.querySelector('#f-phone').value,
+    service: services,
+    vehicle: form.querySelector('#f-vehicle').value,
+    message: form.querySelector('#f-msg').value,
+  };
+
+  try {
+    const res = await fetch('/.netlify/functions/send-booking', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+
+    if (res.ok) {
+      document.querySelectorAll('#contact-form > *:not(#form-success)')
+        .forEach(el => el.classList.add('hidden'));
+      success.classList.remove('hidden');
+    } else {
+      btn.disabled = false;
+      btn.textContent = 'Send Booking Request';
+      btn.style.opacity = '1';
+      alert('Something went wrong. Please try again.');
+    }
+  } catch (err) {
+    btn.disabled = false;
+    btn.textContent = 'Send Booking Request';
+    btn.style.opacity = '1';
+    alert('Something went wrong. Please try again.');
+  }
+}
+</script>
+
+</body>
+</html>
