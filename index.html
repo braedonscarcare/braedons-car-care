@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#0D0D0D" />
+  <meta name="theme-color" content="#FFFFFF" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <title>Braedon's Car Care | Mobile &amp; In-Shop Auto Detailing - San Francisco, San Mateo, Marin &amp; Bay Area</title>
   <meta name="description" content="Professional mobile &amp; in-shop auto detailing serving South San Francisco, San Francisco, Daly City, Pacifica, Millbrae, Burlingame, San Mateo, Foster City, Redwood City, Menlo Park, Palo Alto &amp; Marin County. Exterior detail, interior detail, clay &amp; seal, steam cleaning and more." />
@@ -35,19 +35,19 @@
   <style>
     /* ── TOKENS ─────────────────────────────── */
     :root {
-      --white:    #0D0D0D;
-      --grey-50:  #111111;
-      --grey-100: #161616;
-      --grey-200: #2A2A2A;
-      --grey-400: #888888;
-      --grey-600: #BBBBBB;
-      --grey-900: #F0F0F0;
-      --gold-200: #1E3A5F;
-      --gold-300: #1D4ED8;
-      --gold-400: #1D4ED8;
-      --gold-500: #1E40AF;
-      --gold-600: #1E3A8A;
-      --dark:     #F0F0F0;
+      --white:    #FFFFFF;
+      --grey-50:  #FAFAFA;
+      --grey-100: #F4F4F5;
+      --grey-200: #E4E4E7;
+      --grey-400: #A1A1AA;
+      --grey-600: #52525B;
+      --grey-900: #18181B;
+      --gold-200: #F0D98C;
+      --gold-300: #E8C46A;
+      --gold-400: #D4A84B;
+      --gold-500: #B8922F;
+      --gold-600: #9A7820;
+      --dark:     #18181B;
     }
 
     /* ── BASE ───────────────────────────────── */
@@ -93,16 +93,16 @@
       transition: background .35s ease, box-shadow .35s ease, backdrop-filter .35s ease;
     }
     #navbar.scrolled {
-      background: rgba(13,13,13,.97);
+      background: rgba(255,255,255,.95);
       backdrop-filter: blur(24px);
       -webkit-backdrop-filter: blur(24px);
-      box-shadow: 0 4px 24px rgba(0,0,0,.4);
-      border: 1px solid rgba(255,255,255,.08);
+      box-shadow: 0 4px 24px rgba(0,0,0,.08);
+      border: 1px solid var(--grey-200);
     }
-    #navbar.scrolled .nav-logo { color: #FFFFFF; }
-    #navbar.scrolled .nav-link { color: rgba(255,255,255,.8); }
+    #navbar.scrolled .nav-logo { color: var(--grey-900); }
+    #navbar.scrolled .nav-link { color: var(--grey-600); }
     #navbar.scrolled .nav-link:hover { color: var(--gold-400); }
-    #navbar.scrolled #hamburger span { background: #FFFFFF; }
+    #navbar.scrolled #hamburger span { background: var(--grey-900); }
     .nav-logo {
       font-family: 'Inter', sans-serif;
       font-size: 1.35rem; font-weight: 600;
@@ -126,7 +126,7 @@
     .nav-cta:hover {
       background: var(--gold-500);
       transform: translateY(-1px);
-      box-shadow: 0 6px 18px rgba(29,78,216,.3);
+      box-shadow: 0 6px 18px rgba(212,168,75,.35);
     }
 
     /* Mobile menu */
@@ -219,7 +219,7 @@
     /* Buttons */
     .btn-gold {
       display: inline-flex; align-items: center; gap: 8px;
-      background: var(--gold-400); color: #FFFFFF;
+      background: var(--gold-400); color: var(--grey-900);
       font-weight: 600; font-size: .9rem;
       padding: 14px 28px; border-radius: 10px;
       letter-spacing: .02em; border: none; cursor: pointer;
@@ -228,7 +228,7 @@
     .btn-gold:hover {
       background: var(--gold-500);
       transform: translateY(-2px);
-      box-shadow: 0 10px 26px rgba(29,78,216,.3);
+      box-shadow: 0 10px 26px rgba(212,168,75,.38);
     }
     .btn-outline-white {
       display: inline-flex; align-items: center; gap: 8px;
@@ -289,7 +289,7 @@
     .gold-rule.center { margin-left: auto; margin-right: auto; }
 
     /* ── SERVICE CARDS ──────────────────────── */
-    .svc-card { background: #141414 !important;
+    .svc-card {
       background: var(--white); border-radius: 4px;
       padding: 38px 34px 34px;
       border: 1.5px solid var(--grey-200);
@@ -304,10 +304,10 @@
       background-size: 200% auto;
       opacity: 0; transition: opacity .3s;
     }
-    .svc-card:hover { transform: translateY(-7px); box-shadow: 0 20px 50px rgba(0,0,0,.09); border-color: rgba(29,78,216,.5); }
+    .svc-card:hover { transform: translateY(-7px); box-shadow: 0 20px 50px rgba(0,0,0,.09); border-color: rgba(212,168,75,.4); }
     .svc-card:hover::after { opacity: 1; animation: shimmer 2.5s linear infinite; }
 
-    .svc-card.featured { background: #0A1628; border-color: rgba(29,78,216,.5); border-radius: 22px; }
+    .svc-card.featured { background: var(--grey-900); border-color: rgba(212,168,75,.35); border-radius: 22px; }
     .svc-card.featured .svc-name  { color: white; }
     .svc-card.featured .svc-desc  { color: rgba(255,255,255,.62); }
     .svc-card.featured .svc-price { color: var(--gold-400); }
@@ -316,7 +316,7 @@
     .svc-card.featured .svc-badge { display: inline-block; }
 
     .svc-badge {
-      display: none; background: var(--gold-400); color: #FFFFFF;
+      display: none; background: var(--gold-400); color: var(--grey-900);
       font-size: .68rem; font-weight: 700; letter-spacing: .1em;
       text-transform: uppercase; padding: 4px 12px; border-radius: 20px;
       margin-bottom: 14px;
@@ -344,8 +344,8 @@
     }
     .btn-card-dark  { background:rgba(255,255,255,.08); color:var(--grey-900); border:1.5px solid rgba(255,255,255,.15); }
     .btn-card-dark:hover  { background:var(--grey-900); color:white; transform:translateY(-1px); }
-    .btn-card-gold  { background:var(--gold-400); color:#FFFFFF; }
-    .btn-card-gold:hover  { background:var(--gold-500); transform:translateY(-1px); box-shadow:0 8px 22px rgba(29,78,216,.3); }
+    .btn-card-gold  { background:var(--gold-400); color:var(--grey-900); }
+    .btn-card-gold:hover  { background:var(--gold-500); transform:translateY(-1px); box-shadow:0 8px 22px rgba(212,168,75,.4); }
 
     .btn-outline-dark {
       display:inline-flex; align-items:center; gap:8px;
@@ -395,7 +395,7 @@
       letter-spacing:.09em; text-transform:uppercase; border-radius:20px;
     }
     .ba-lbl-b { left:14px; background:rgba(0,0,0,.6); color:white; }
-    .ba-lbl-a { right:14px; background:rgba(29,78,216,.85); color:#ffffff; }
+    .ba-lbl-a { right:14px; background:rgba(212,168,75,.92); color:var(--grey-900); }
     .ba-range {
       position:absolute; inset:0; z-index:20; width:100%; height:100%;
       opacity:0; cursor:ew-resize;
@@ -403,15 +403,15 @@
     }
 
     /* ── TESTIMONIALS ───────────────────────── */
-    .review-card { background:#141414; border-radius:4px;
+    .review-card { background:var(--white); border-radius:4px;
       padding:28px 28px 24px;
       border:1.5px solid var(--grey-200);
       transition:transform .3s ease, box-shadow .3s ease;
       cursor:default;
     }
-    .review-card:hover { transform:translateY(-5px); box-shadow:0 18px 44px rgba(0,0,0,.08); border-color:rgba(29,78,216,.45); }
+    .review-card:hover { transform:translateY(-5px); box-shadow:0 18px 44px rgba(0,0,0,.08); border-color:rgba(212,168,75,.35); }
     .star-svg { color:var(--gold-400); }
-    .rev-text { font-size:.92rem; color:#CCCCCC; line-height:1.72; margin-bottom:18px; }
+    .rev-text { font-size:.92rem; color:#374151; line-height:1.72; margin-bottom:18px; }
     .rev-author { display:flex; align-items:center; gap:12px; }
     .rev-avatar {
       width:40px; height:40px; border-radius:50%; flex-shrink:0;
@@ -425,7 +425,7 @@
     .rev-loc  { font-size:.78rem; color:#9CA3AF; margin-top:1px; }
 
     /* ── AREA PILLS ─────────────────────────── */
-    .city-pill { background: #1a1a1a;
+    .city-pill { background: var(--white);
       border: 1.5px solid var(--grey-200);
       color: var(--grey-600);
       font-size:.8rem; font-weight:500; letter-spacing:.03em;
@@ -434,8 +434,8 @@
       cursor:default;
     }
     .city-pill:hover {
-      background:rgba(29,78,216,.08);
-      border-color:rgba(29,78,216,.5);
+      background:rgba(212,168,75,.08);
+      border-color:rgba(212,168,75,.5);
       color:var(--gold-400);
     }
 
@@ -449,7 +449,7 @@
     }
     .form-field:focus {
       border-color:var(--gold-400);
-      box-shadow:0 0 0 3px rgba(29,78,216,.2);
+      box-shadow:0 0 0 3px rgba(212,168,75,.13);
     }
     .form-field::placeholder { color:#9CA3AF; }
     textarea.form-field { resize:vertical; min-height:118px; }
@@ -461,13 +461,13 @@
     .contact-info-item { display:flex; align-items:center; gap:14px; }
     .ci-icon {
       width:44px; height:44px; border-radius:12px; flex-shrink:0;
-      background:rgba(29,78,216,.12);
+      background:rgba(212,168,75,.1);
       display:flex; align-items:center; justify-content:center;
     }
 
     /* ── FOOTER ─────────────────────────────── */
-    footer { background: #111111;
-      border-top: 1px solid rgba(255,255,255,.08);
+    footer { background: var(--grey-900);
+      border-top: 1px solid rgba(212,168,75,.12);
     }
 
     /* ── FLOATING BADGE ─────────────────────── */
@@ -652,33 +652,33 @@
 
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
       <div class="reveal d1">
-        <div class="overflow-hidden" style="height:240px; background:#1a1a1a;"><video src="video.mov" autoplay muted loop playsinline preload="metadata" aria-label="Car detailing clip" class="w-full h-full object-cover"></video></div>
+        <div class="overflow-hidden" style="height:240px; background:#e4e4e7;"><video src="video.mov" autoplay muted loop playsinline preload="metadata" aria-label="Car detailing clip" class="w-full h-full object-cover"></video></div>
         <p class="text-sm text-center mt-3" style="color:var(--grey-600)">Full Detail - Audi S5</p>
 
       </div>
       <div class="reveal d2">
-        <div class="overflow-hidden" style="height:240px; background:#1a1a1a;"><video src="video2.mov" autoplay muted loop playsinline preload="metadata" aria-label="Car detailing clip" class="w-full h-full object-cover"></video></div>
+        <div class="overflow-hidden" style="height:240px; background:#e4e4e7;"><video src="video2.mov" autoplay muted loop playsinline preload="metadata" aria-label="Car detailing clip" class="w-full h-full object-cover"></video></div>
         <p class="text-sm text-center mt-3" style="color:var(--grey-600)">Basic Exterior Detail - Mercedes GLC 300</p>
 
       </div>
       <div class="reveal d3">
-        <div class="overflow-hidden" style="height:240px; background:#1a1a1a;"><video src="v3.mov" autoplay muted loop playsinline preload="metadata" aria-label="Car detailing clip" class="w-full h-full object-cover"></video></div>
+        <div class="overflow-hidden" style="height:240px; background:#e4e4e7;"><video src="v3.mov" autoplay muted loop playsinline preload="metadata" aria-label="Car detailing clip" class="w-full h-full object-cover"></video></div>
         <p class="text-sm text-center mt-3" style="color:var(--grey-600)">Interior Detail - Tesla Model Y</p>
       </div>
       <div class="reveal d1">
-        <div class="overflow-hidden" style="height:240px; background:#1a1a1a;"><video src="v4.mov" autoplay muted loop playsinline preload="metadata" aria-label="Car detailing clip" class="w-full h-full object-cover"></video></div>
+        <div class="overflow-hidden" style="height:240px; background:#e4e4e7;"><video src="v4.mov" autoplay muted loop playsinline preload="metadata" aria-label="Car detailing clip" class="w-full h-full object-cover"></video></div>
         <p class="text-sm text-center mt-3" style="color:var(--grey-600)">Basic Exterior Detail - Porsche Panamera</p>
       </div>
       <div class="reveal d2">
-        <div class="overflow-hidden" style="height:240px; background:#1a1a1a;"><video src="v5.mov" autoplay muted loop playsinline preload="metadata" aria-label="Car detailing clip" class="w-full h-full object-cover"></video></div>
+        <div class="overflow-hidden" style="height:240px; background:#e4e4e7;"><video src="v5.mov" autoplay muted loop playsinline preload="metadata" aria-label="Car detailing clip" class="w-full h-full object-cover"></video></div>
         <p class="text-sm text-center mt-3" style="color:var(--grey-600)">Full Detail - Lexus UX</p>
       </div>
       <div class="reveal d3">
-        <div class="overflow-hidden" style="height:240px; background:#1a1a1a;"><video src="v6.mov" autoplay muted loop playsinline preload="metadata" aria-label="Car detailing clip" class="w-full h-full object-cover"></video></div>
+        <div class="overflow-hidden" style="height:240px; background:#e4e4e7;"><video src="v6.mov" autoplay muted loop playsinline preload="metadata" aria-label="Car detailing clip" class="w-full h-full object-cover"></video></div>
         <p class="text-sm text-center mt-3" style="color:var(--grey-600)">Full Detail - Tesla Model 3</p>
       </div>
       <div class="reveal d1">
-        <div class="overflow-hidden" style="height:240px; background:#1a1a1a;"><video src="v7.mov" autoplay muted loop playsinline preload="metadata" aria-label="Car detailing clip" class="w-full h-full object-cover"></video></div>
+        <div class="overflow-hidden" style="height:240px; background:#e4e4e7;"><video src="v7.mov" autoplay muted loop playsinline preload="metadata" aria-label="Car detailing clip" class="w-full h-full object-cover"></video></div>
         <p class="text-sm text-center mt-3" style="color:var(--grey-600)">Interior Detail - Range Rover Defender</p>
       </div>
       <div class="reveal d2">
@@ -686,7 +686,7 @@
         <p class="text-sm text-center mt-3" style="color:var(--grey-600)">Clay and Seal - Tesla Model X</p>
       </div>
       <div class="reveal d3">
-        <div class="overflow-hidden" style="height:240px; background:#1a1a1a;"><video src="v9.mov" autoplay muted loop playsinline preload="metadata" aria-label="Car detailing clip" class="w-full h-full object-cover"></video></div>
+        <div class="overflow-hidden" style="height:240px; background:#e4e4e7;"><video src="v9.mov" autoplay muted loop playsinline preload="metadata" aria-label="Car detailing clip" class="w-full h-full object-cover"></video></div>
         <p class="text-sm text-center mt-3" style="color:var(--grey-600)">Interior Detail + Steam Clean - Honda Accord</p>
       </div>
     </div>
@@ -711,7 +711,7 @@
       <!-- EXTERIOR WASH -->
       <article class="svc-card reveal d1">
         <div class="svc-icon" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="#1D4ED8"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#D4A84B"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
         </div>
         <h3 class="svc-name">Basic Exterior Detail</h3>
         <p class="svc-desc">A full exterior clean from top to bottom. Your paint will look sharp and stay protected.</p>
@@ -737,7 +737,7 @@
       <article class="svc-card featured reveal d2">
         <span class="svc-badge">Best Value</span>
         <div class="svc-icon" style="background:rgba(212,168,75,.14)" aria-hidden="true">
-          <svg width="28" height="28" viewBox="0 0 28 28" fill="#1D4ED8">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="#D4A84B">
             <!-- top center star -->
             <g transform="translate(14,7) scale(0.5) translate(-12,-12)">
               <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
@@ -779,7 +779,7 @@
       <!-- STANDARD INTERIOR -->
       <article class="svc-card reveal d3">
         <div class="svc-icon" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="#1D4ED8"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#D4A84B"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
         </div>
         <h3 class="svc-name">Standard Interior Detail</h3>
         <p class="svc-desc">A deep clean of everything inside your car. Fresh, spotless, and actually clean this time.</p>
@@ -809,45 +809,45 @@
       <p class="text-center text-xs font-semibold tracking-widest uppercase text-gray-400 mb-6">Available Add-Ons</p>
       <div class="grid grid-cols-2 sm:grid-cols-5 gap-3 max-w-4xl mx-auto">
 
-        <div class="relative group rounded-2xl px-5 py-4 border text-center hover:shadow-md transition-all cursor-default" style="background:#1a1a1a; border-color:#2a2a2a;">
-          <div class="font-semibold text-sm mb-1 text-[#F0F0F0]">Steam Cleaning</div>
-          <div class="font-semibold text-sm" style="color:#60A5FA">$39.99</div>
+        <div class="relative group rounded-2xl px-5 py-4 border text-center hover:shadow-md transition-all cursor-default" style="background:#FFFFFF; border-color:#E4E4E7;">
+          <div class="font-semibold text-sm mb-1 text-[var(--grey-900)]">Steam Cleaning</div>
+          <div class="font-semibold text-sm" style="color:var(--gold-500)">$39.99</div>
           <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-52 bg-[#18181B] text-white text-xs rounded-xl px-3 py-2 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-20 shadow-lg">
             High-pressure steam sanitizes and deep cleans interior surfaces, vents, and crevices without harsh chemicals.
             <div class="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-[#18181B]"></div>
           </div>
         </div>
 
-        <div class="relative group rounded-2xl px-5 py-4 border text-center hover:shadow-md transition-all cursor-default" style="background:#1a1a1a; border-color:#2a2a2a;">
-          <div class="font-semibold text-sm mb-1 text-[#F0F0F0]">Clay &amp; Sealant</div>
-          <div class="font-semibold text-sm" style="color:#60A5FA">$49.99</div>
+        <div class="relative group rounded-2xl px-5 py-4 border text-center hover:shadow-md transition-all cursor-default" style="background:#FFFFFF; border-color:#E4E4E7;">
+          <div class="font-semibold text-sm mb-1 text-[var(--grey-900)]">Clay &amp; Sealant</div>
+          <div class="font-semibold text-sm" style="color:var(--gold-500)">$49.99</div>
           <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-52 bg-[#18181B] text-white text-xs rounded-xl px-3 py-2 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-20 shadow-lg">
             A clay bar pulls embedded contaminants from your paint, then sealant locks in a protective layer that makes it shine and repel water.
             <div class="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-[#18181B]"></div>
           </div>
         </div>
 
-        <div class="relative group rounded-2xl px-5 py-4 border text-center hover:shadow-md transition-all cursor-default" style="background:#1a1a1a; border-color:#2a2a2a;">
-          <div class="font-semibold text-sm mb-1 text-[#F0F0F0]">Shampoo &amp; Stain Extraction</div>
-          <div class="font-semibold text-sm" style="color:#60A5FA">From $49.99</div>
+        <div class="relative group rounded-2xl px-5 py-4 border text-center hover:shadow-md transition-all cursor-default" style="background:#FFFFFF; border-color:#E4E4E7;">
+          <div class="font-semibold text-sm mb-1 text-[var(--grey-900)]">Shampoo &amp; Stain Extraction</div>
+          <div class="font-semibold text-sm" style="color:var(--gold-500)">From $49.99</div>
           <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-52 bg-[#18181B] text-white text-xs rounded-xl px-3 py-2 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-20 shadow-lg">
             Hot water extraction shampoos your seats and carpets, lifting deep stains and odors.
             <div class="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-[#18181B]"></div>
           </div>
         </div>
 
-        <div class="relative group rounded-2xl px-5 py-4 border text-center hover:shadow-md transition-all cursor-default" style="background:#1a1a1a; border-color:#2a2a2a;">
-          <div class="font-semibold text-sm mb-1 text-[#F0F0F0]">Pet Hair Removal</div>
-          <div class="font-semibold text-sm" style="color:#60A5FA">From $49.99</div>
+        <div class="relative group rounded-2xl px-5 py-4 border text-center hover:shadow-md transition-all cursor-default" style="background:#FFFFFF; border-color:#E4E4E7;">
+          <div class="font-semibold text-sm mb-1 text-[var(--grey-900)]">Pet Hair Removal</div>
+          <div class="font-semibold text-sm" style="color:var(--gold-500)">From $49.99</div>
           <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-52 bg-[#18181B] text-white text-xs rounded-xl px-3 py-2 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-20 shadow-lg">
             Specialized tools and techniques remove stubborn pet hair from seats, carpets, and floor mats.
             <div class="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-[#18181B]"></div>
           </div>
         </div>
 
-        <div class="relative group rounded-2xl px-5 py-4 border text-center hover:shadow-md transition-all cursor-default" style="background:#1a1a1a; border-color:#2a2a2a;">
-          <div class="font-semibold text-sm mb-1 text-[#F0F0F0]">Plastic, Leather, Vinyl &amp; Rubber Dressing</div>
-          <div class="font-semibold text-sm" style="color:#60A5FA">$29.99</div>
+        <div class="relative group rounded-2xl px-5 py-4 border text-center hover:shadow-md transition-all cursor-default" style="background:#FFFFFF; border-color:#E4E4E7;">
+          <div class="font-semibold text-sm mb-1 text-[var(--grey-900)]">Plastic, Leather, Vinyl &amp; Rubber Dressing</div>
+          <div class="font-semibold text-sm" style="color:var(--gold-500)">$29.99</div>
           <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-52 bg-[#18181B] text-white text-xs rounded-xl px-3 py-2 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-20 shadow-lg">
             A conditioning treatment applied to interior plastics, leather surfaces, and rubber trims to restore a clean, fresh appearance and prevent cracking.
             <div class="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-[#18181B]"></div>
@@ -858,7 +858,7 @@
     </div>
 
     <div class="text-center mt-10 reveal">
-      <p class="text-[#AAAAAA] text-[0.95rem] font-medium mb-4">Not sure what your car needs? Just reach out and we'll figure it out together.</p>
+      <p class="text-gray-500 text-[0.95rem] font-medium mb-4">Not sure what your car needs? Just reach out and we'll figure it out together.</p>
       <div class="flex flex-wrap justify-center gap-3">
         <a href="#contact" class="btn-gold" style="font-size:.875rem; padding:12px 24px;">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
@@ -900,7 +900,7 @@
 
           <div class="contact-info-item">
             <div class="ci-icon">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1D4ED8" stroke-width="2" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D4A84B" stroke-width="2" aria-hidden="true">
                 <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/>
               </svg>
             </div>
@@ -912,7 +912,7 @@
 
           <div class="contact-info-item">
             <div class="ci-icon">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1D4ED8" stroke-width="2" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D4A84B" stroke-width="2" aria-hidden="true">
                 <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 12a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1.13h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
               </svg>
             </div>
@@ -926,7 +926,7 @@
 
           <div class="contact-info-item">
             <div class="ci-icon">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1D4ED8" stroke-width="2" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D4A84B" stroke-width="2" aria-hidden="true">
                 <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
               </svg>
             </div>
@@ -941,7 +941,7 @@
 
           <div class="contact-info-item" style="align-items:flex-start">
             <div class="ci-icon">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1D4ED8" stroke-width="2" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D4A84B" stroke-width="2" aria-hidden="true">
                 <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>
               </svg>
             </div>
@@ -988,7 +988,7 @@
               <!-- Basic Exterior Detail -->
               <div class="flex flex-col gap-1">
                 <label class="flex items-center gap-3 cursor-pointer group">
-                  <input type="checkbox" id="chk-ext" class="w-4 h-4 accent-[#1D4ED8] cursor-pointer" onchange="updatePkgValue('ext')">
+                  <input type="checkbox" id="chk-ext" class="w-4 h-4 accent-[#D4A84B] cursor-pointer" onchange="updatePkgValue('ext')">
                   <span class="text-sm transition-colors" style="color:var(--grey-900)">Basic Exterior Detail <span id="form-ext-price" class="text-gray-400 font-normal">$79.99</span></span>
                 </label>
                 <input type="hidden" name="service" id="val-ext" value="">
@@ -1003,7 +1003,7 @@
               <!-- Standard Interior Detail -->
               <div class="flex flex-col gap-1">
                 <label class="flex items-center gap-3 cursor-pointer group">
-                  <input type="checkbox" id="chk-int" class="w-4 h-4 accent-[#1D4ED8] cursor-pointer" onchange="updatePkgValue('int')">
+                  <input type="checkbox" id="chk-int" class="w-4 h-4 accent-[#D4A84B] cursor-pointer" onchange="updatePkgValue('int')">
                   <span class="text-sm transition-colors" style="color:var(--grey-900)">Standard Interior Detail <span id="form-int-price" class="text-gray-400 font-normal">$119.99</span></span>
                 </label>
                 <input type="hidden" name="service" id="val-int" value="">
@@ -1017,7 +1017,7 @@
               <!-- Full Detail Bundle -->
               <div class="flex flex-col gap-1">
                 <label class="flex items-center gap-3 cursor-pointer group">
-                  <input type="checkbox" id="chk-bundle" class="w-4 h-4 accent-[#1D4ED8] cursor-pointer" onchange="updatePkgValue('bundle')">
+                  <input type="checkbox" id="chk-bundle" class="w-4 h-4 accent-[#D4A84B] cursor-pointer" onchange="updatePkgValue('bundle')">
                   <span class="text-sm transition-colors" style="color:var(--grey-900)">Full Detail Bundle <span id="form-bundle-price" class="text-gray-400 font-normal">$179.99 (save $20)</span></span>
                 </label>
                 <input type="hidden" name="service" id="val-bundle" value="">
@@ -1030,23 +1030,23 @@
               </div>
               <p class="text-[.68rem] font-semibold tracking-widest uppercase text-gray-400 mt-2 mb-1">Add-Ons</p>
               <label class="flex items-center gap-3 cursor-pointer group">
-                <input type="checkbox" name="service" value="Steam Cleaning ($39.99)" class="w-4 h-4 accent-[#1D4ED8] cursor-pointer">
+                <input type="checkbox" name="service" value="Steam Cleaning ($39.99)" class="w-4 h-4 accent-[#D4A84B] cursor-pointer">
                 <span class="text-sm transition-colors" style="color:var(--grey-900)">Steam Cleaning <span class="text-gray-400 font-normal">$39.99</span></span>
               </label>
               <label class="flex items-center gap-3 cursor-pointer group">
-                <input type="checkbox" name="service" value="Clay & Sealant ($49.99)" class="w-4 h-4 accent-[#1D4ED8] cursor-pointer">
+                <input type="checkbox" name="service" value="Clay & Sealant ($49.99)" class="w-4 h-4 accent-[#D4A84B] cursor-pointer">
                 <span class="text-sm transition-colors" style="color:var(--grey-900)">Clay &amp; Sealant <span class="text-gray-400 font-normal">$49.99</span></span>
               </label>
               <label class="flex items-center gap-3 cursor-pointer group">
-                <input type="checkbox" name="service" value="Shampoo & Stain Extraction ($49.99+)" class="w-4 h-4 accent-[#1D4ED8] cursor-pointer">
+                <input type="checkbox" name="service" value="Shampoo & Stain Extraction ($49.99+)" class="w-4 h-4 accent-[#D4A84B] cursor-pointer">
                 <span class="text-sm transition-colors" style="color:var(--grey-900)">Shampoo &amp; Stain Extraction <span class="text-gray-400 font-normal">from $49.99</span></span>
               </label>
               <label class="flex items-center gap-3 cursor-pointer group">
-                <input type="checkbox" name="service" value="Pet Hair Removal ($49.99+)" class="w-4 h-4 accent-[#1D4ED8] cursor-pointer">
+                <input type="checkbox" name="service" value="Pet Hair Removal ($49.99+)" class="w-4 h-4 accent-[#D4A84B] cursor-pointer">
                 <span class="text-sm transition-colors" style="color:var(--grey-900)">Pet Hair Removal <span class="text-gray-400 font-normal">from $49.99</span></span>
               </label>
               <label class="flex items-center gap-3 cursor-pointer group">
-                <input type="checkbox" name="service" value="Plastic, Leather, Vinyl & Rubber Dressing ($29.99)" class="w-4 h-4 accent-[#1D4ED8] cursor-pointer">
+                <input type="checkbox" name="service" value="Plastic, Leather, Vinyl & Rubber Dressing ($29.99)" class="w-4 h-4 accent-[#D4A84B] cursor-pointer">
                 <span class="text-sm transition-colors" style="color:var(--grey-900)">Plastic, Leather, Vinyl &amp; Rubber Dressing <span class="text-gray-400 font-normal">$29.99</span></span>
               </label>
             </div>
@@ -1074,7 +1074,7 @@
           <!-- Success state (hidden) -->
           <div id="form-success" class="hidden text-center py-4">
             <div class="text-2xl mb-2">
-              <svg class="inline w-10 h-10" viewBox="0 0 24 24" fill="none" stroke="#1D4ED8" stroke-width="2" aria-hidden="true">
+              <svg class="inline w-10 h-10" viewBox="0 0 24 24" fill="none" stroke="#D4A84B" stroke-width="2" aria-hidden="true">
                 <path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/>
               </svg>
             </div>
@@ -1387,23 +1387,23 @@
         </h2>
         <div class="gold-rule mb-8"></div>
 
-        <p class="leading-relaxed text-[0.945rem] mb-5">
+        <p class="text-gray-600 leading-relaxed text-[0.945rem] mb-5">
           I'm Braedon. Back during COVID, I was a full-on germophobe. My room had to be spotless, everything in its place, not a single thing out of order. That level of meticulousness stuck with me, and over time it naturally shifted into something I'm actually proud of: an obsession with clean cars.
         </p>
-        <p class="leading-relaxed text-[0.945rem] mb-5">
+        <p class="text-gray-600 leading-relaxed text-[0.945rem] mb-5">
           The business itself started out of necessity. One day I checked my bank account and had $7.42 - not enough for a bucket of balls at the driving range. Instead of sitting around, I grabbed a bucket, some car soap, microfiber towels, and a wash mitt, and started knocking on doors around my neighborhood offering a quick $20 car wash. That's how this whole thing started.
         </p>
-        <p class="leading-relaxed text-[0.945rem] mb-5">
+        <p class="text-gray-600 leading-relaxed text-[0.945rem] mb-5">
           I don't carry the same germophobe energy these days, but that same eye for detail and zero tolerance for "good enough" absolutely carries over into every detail I do. When I'm working on your car, I treat it like it's mine.
         </p>
-        <p class="leading-relaxed text-[0.945rem] mb-9">
+        <p class="text-gray-600 leading-relaxed text-[0.945rem] mb-9">
           I'm heading to Santa Clara University this fall, but this business is real and it's not going anywhere. I show up on time, I work hard, and I don't leave until the job's done right. I'm building this one happy customer at a time and I'd love to earn yours.
         </p>
 
         <div class="flex flex-col gap-4 mb-9">
           <div class="contact-info-item">
             <div class="ci-icon">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1D4ED8" stroke-width="2" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D4A84B" stroke-width="2" aria-hidden="true">
                 <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 000-7.78z"/>
               </svg>
             </div>
@@ -1467,15 +1467,15 @@
 
       <div>
         <img src="newlogo.png" alt="Braedon's Car Care" style="height:44px; width:44px; border-radius:50%; object-fit:cover; margin-bottom:8px;">
-        <p class="text-[#888888] text-sm">Mobile &amp; In-Shop Detailing · Bay Area, California</p>
+        <p class="text-white/35 text-sm">Mobile &amp; In-Shop Detailing · Bay Area, California</p>
       </div>
 
       <nav class="flex flex-wrap gap-6" aria-label="Footer navigation">
-        <a href="#services"     class="text-[#AAAAAA] text-sm hover:text-white transition-colors">Services</a>
-        <a href="#gallery"      class="text-[#AAAAAA] text-sm hover:text-white transition-colors">Gallery</a>
-        <a href="#about"        class="text-[#AAAAAA] text-sm hover:text-white transition-colors">About</a>
-        <a href="#testimonials" class="text-[#AAAAAA] text-sm hover:text-white transition-colors">Reviews</a>
-        <a href="#contact"      class="text-[#AAAAAA] text-sm hover:text-white transition-colors">Contact</a>
+        <a href="#services"     class="text-white/50 text-sm hover:text-white transition-colors">Services</a>
+        <a href="#gallery"      class="text-white/50 text-sm hover:text-white transition-colors">Gallery</a>
+        <a href="#about"        class="text-white/50 text-sm hover:text-white transition-colors">About</a>
+        <a href="#testimonials" class="text-white/50 text-sm hover:text-white transition-colors">Reviews</a>
+        <a href="#contact"      class="text-white/50 text-sm hover:text-white transition-colors">Contact</a>
       </nav>
 
       <a href="#contact" class="btn-gold self-start md:self-auto" style="font-size:.85rem; padding:11px 22px">
@@ -1485,15 +1485,15 @@
     </div>
 
     <div class="border-t border-white/8 mt-10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-3">
-      <p class="text-[#666666] text-xs">&copy; 2026 Braedon's Car Care. All rights reserved.</p>
+      <p class="text-white/25 text-xs">&copy; 2026 Braedon's Car Care. All rights reserved.</p>
       <a href="https://www.instagram.com/braedonscarcare" target="_blank" rel="noopener noreferrer"
-         class="flex items-center gap-2 text-[#777777] hover:text-white transition-colors text-xs">
+         class="flex items-center gap-2 text-white/40 hover:text-white/80 transition-colors text-xs">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
           <rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
         </svg>
         @braedonscarcare
       </a>
-      <p class="text-[#666666] text-xs">Bay Area, California</p>
+      <p class="text-white/25 text-xs">Bay Area, California</p>
     </div>
   </div>
 </footer>
