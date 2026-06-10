@@ -289,7 +289,7 @@
     .gold-rule.center { margin-left: auto; margin-right: auto; }
 
     /* ── SERVICE CARDS ──────────────────────── */
-    .svc-card {
+    .svc-card { background: #141414 !important;
       background: var(--white); border-radius: 4px;
       padding: 38px 34px 34px;
       border: 1.5px solid var(--grey-200);
@@ -307,11 +307,7 @@
     .svc-card:hover { transform: translateY(-7px); box-shadow: 0 20px 50px rgba(0,0,0,.09); border-color: rgba(29,78,216,.5); }
     .svc-card:hover::after { opacity: 1; animation: shimmer 2.5s linear infinite; }
 
-    .svc-card.featured {
-      background: var(--grey-900);
-      border-color: rgba(29,78,216,.35);
-      border-radius: 22px;
-    }
+    .svc-card.featured { background: #0A1628; border-color: rgba(29,78,216,.5); border-radius: 22px; }
     .svc-card.featured .svc-name  { color: white; }
     .svc-card.featured .svc-desc  { color: rgba(255,255,255,.62); }
     .svc-card.featured .svc-price { color: var(--gold-400); }
@@ -331,10 +327,10 @@
       display: flex; align-items: center; justify-content: center;
       margin-bottom: 18px;
     }
-    .svc-name  { font-family:'Cormorant Garamond',serif; font-size:1.65rem; font-weight:600; color:var(--grey-900); margin-bottom:8px; }
+    .svc-name  { font-family:'Inter',sans-serif; font-size:1.65rem; font-weight:600; color:var(--grey-900); margin-bottom:8px; }
     .svc-desc  { font-size:.88rem; color:var(--grey-600); line-height:1.65; margin-bottom:18px; }
-    .svc-price { font-family:'Cormorant Garamond',serif; font-size:2rem; font-weight:600; color:var(--grey-900); margin-bottom:18px; }
-    .svc-price small { font-family:'DM Sans',sans-serif; font-size:.85rem; font-weight:400; color:var(--grey-400); opacity:1; }
+    .svc-price { font-family:'Inter',sans-serif; font-size:2rem; font-weight:600; color:var(--grey-900); margin-bottom:18px; }
+    .svc-price small { font-family:'Inter',sans-serif; font-size:.85rem; font-weight:400; color:var(--grey-400); opacity:1; }
     .svc-feats { list-style:none; padding:0; margin:0 0 26px; display:flex; flex-direction:column; gap:9px; }
     .svc-li    { display:flex; align-items:center; gap:9px; font-size:.865rem; color:var(--grey-600); }
     .li-dot    { width:5px; height:5px; border-radius:50%; background:var(--gold-400); flex-shrink:0; }
@@ -346,7 +342,7 @@
       border:none; cursor:pointer; transition: all .2s;
       text-decoration:none;
     }
-    .btn-card-dark  { background:var(--grey-100); color:var(--grey-900); border:1.5px solid var(--grey-200); }
+    .btn-card-dark  { background:rgba(255,255,255,.08); color:var(--grey-900); border:1.5px solid rgba(255,255,255,.15); }
     .btn-card-dark:hover  { background:var(--grey-900); color:white; transform:translateY(-1px); }
     .btn-card-gold  { background:var(--gold-400); color:#FFFFFF; }
     .btn-card-gold:hover  { background:var(--gold-500); transform:translateY(-1px); box-shadow:0 8px 22px rgba(29,78,216,.3); }
@@ -356,7 +352,7 @@
       background:transparent; color:var(--grey-900);
       font-weight:600; font-size:.9rem;
       padding:14px 28px; border-radius:10px;
-      border:1.5px solid var(--grey-200); cursor:pointer;
+      border:1.5px solid rgba(255,255,255,.25); cursor:pointer;
       transition:background .2s, color .2s, transform .2s, border-color .2s;
       text-decoration:none;
     }
@@ -399,7 +395,7 @@
       letter-spacing:.09em; text-transform:uppercase; border-radius:20px;
     }
     .ba-lbl-b { left:14px; background:rgba(0,0,0,.6); color:white; }
-    .ba-lbl-a { right:14px; background:rgba(212,168,75,.92); color:var(--grey-900); }
+    .ba-lbl-a { right:14px; background:rgba(29,78,216,.85); color:#ffffff; }
     .ba-range {
       position:absolute; inset:0; z-index:20; width:100%; height:100%;
       opacity:0; cursor:ew-resize;
@@ -407,31 +403,29 @@
     }
 
     /* ── TESTIMONIALS ───────────────────────── */
-    .review-card {
-      background:var(--white); border-radius:4px;
+    .review-card { background:#141414; border-radius:4px;
       padding:28px 28px 24px;
       border:1.5px solid var(--grey-200);
       transition:transform .3s ease, box-shadow .3s ease;
       cursor:default;
     }
-    .review-card:hover { transform:translateY(-5px); box-shadow:0 18px 44px rgba(0,0,0,.08); border-color:rgba(212,168,75,.35); }
+    .review-card:hover { transform:translateY(-5px); box-shadow:0 18px 44px rgba(0,0,0,.08); border-color:rgba(29,78,216,.45); }
     .star-svg { color:var(--gold-400); }
-    .rev-text { font-size:.92rem; color:#374151; line-height:1.72; margin-bottom:18px; }
+    .rev-text { font-size:.92rem; color:#CCCCCC; line-height:1.72; margin-bottom:18px; }
     .rev-author { display:flex; align-items:center; gap:12px; }
     .rev-avatar {
       width:40px; height:40px; border-radius:50%; flex-shrink:0;
       background: var(--grey-100);
       border: 1.5px solid var(--grey-200);
       display:flex; align-items:center; justify-content:center;
-      font-family:'Cormorant Garamond',serif; font-size:1rem; font-weight:600;
-      color:var(--gold-500);
+      font-family:'Inter',sans-serif; font-size:1rem; font-weight:600;
+      color:var(--gold-400);
     }
     .rev-name { font-weight:600; font-size:.875rem; color:var(--grey-900); }
     .rev-loc  { font-size:.78rem; color:#9CA3AF; margin-top:1px; }
 
     /* ── AREA PILLS ─────────────────────────── */
-    .city-pill {
-      background: var(--white);
+    .city-pill { background: #1a1a1a;
       border: 1.5px solid var(--grey-200);
       color: var(--grey-600);
       font-size:.8rem; font-weight:500; letter-spacing:.03em;
@@ -442,14 +436,14 @@
     .city-pill:hover {
       background:rgba(29,78,216,.08);
       border-color:rgba(29,78,216,.5);
-      color:var(--gold-500);
+      color:var(--gold-400);
     }
 
     /* ── CONTACT ────────────────────────────── */
     .form-field {
       width:100%; padding:13px 16px;
       border:1.5px solid var(--grey-200); border-radius:10px;
-      font-family:'DM Sans',sans-serif; font-size:.9rem; color:var(--grey-900);
+      font-family:'Inter',sans-serif; font-size:.9rem; color:var(--grey-900);
       background:var(--white); outline:none;
       transition:border-color .2s, box-shadow .2s;
     }
@@ -659,33 +653,33 @@
 
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
       <div class="reveal d1">
-        <div class="rounded-[18px] overflow-hidden" style="height:240px; background:#e4e4e7;"><video src="video.mov" autoplay muted loop playsinline preload="metadata" aria-label="Car detailing clip" class="w-full h-full object-cover"></video></div>
+        <div class="rounded-[18px] overflow-hidden" style="height:240px; background:#1a1a1a;"><video src="video.mov" autoplay muted loop playsinline preload="metadata" aria-label="Car detailing clip" class="w-full h-full object-cover"></video></div>
         <p class="text-sm text-center mt-3" style="color:var(--grey-600)">Full Detail — Audi S5</p>
 
       </div>
       <div class="reveal d2">
-        <div class="rounded-[18px] overflow-hidden" style="height:240px; background:#e4e4e7;"><video src="video2.mov" autoplay muted loop playsinline preload="metadata" aria-label="Car detailing clip" class="w-full h-full object-cover"></video></div>
+        <div class="rounded-[18px] overflow-hidden" style="height:240px; background:#1a1a1a;"><video src="video2.mov" autoplay muted loop playsinline preload="metadata" aria-label="Car detailing clip" class="w-full h-full object-cover"></video></div>
         <p class="text-sm text-center mt-3" style="color:var(--grey-600)">Basic Exterior Detail — Mercedes GLC 300</p>
 
       </div>
       <div class="reveal d3">
-        <div class="rounded-none overflow-hidden" style="height:240px; background:#e4e4e7;"><video src="v3.mov" autoplay muted loop playsinline preload="metadata" aria-label="Car detailing clip" class="w-full h-full object-cover"></video></div>
+        <div class="rounded-none overflow-hidden" style="height:240px; background:#1a1a1a;"><video src="v3.mov" autoplay muted loop playsinline preload="metadata" aria-label="Car detailing clip" class="w-full h-full object-cover"></video></div>
         <p class="text-sm text-center mt-3" style="color:var(--grey-600)">Interior Detail — Tesla Model Y</p>
       </div>
       <div class="reveal d1">
-        <div class="rounded-[4px] overflow-hidden" style="height:240px; background:#e4e4e7;"><video src="v4.mov" autoplay muted loop playsinline preload="metadata" aria-label="Car detailing clip" class="w-full h-full object-cover"></video></div>
+        <div class="rounded-[4px] overflow-hidden" style="height:240px; background:#1a1a1a;"><video src="v4.mov" autoplay muted loop playsinline preload="metadata" aria-label="Car detailing clip" class="w-full h-full object-cover"></video></div>
         <p class="text-sm text-center mt-3" style="color:var(--grey-600)">Basic Exterior Detail — Porsche Panamera</p>
       </div>
       <div class="reveal d2">
-        <div class="rounded-[18px] overflow-hidden" style="height:240px; background:#e4e4e7;"><video src="v5.mov" autoplay muted loop playsinline preload="metadata" aria-label="Car detailing clip" class="w-full h-full object-cover"></video></div>
+        <div class="rounded-[18px] overflow-hidden" style="height:240px; background:#1a1a1a;"><video src="v5.mov" autoplay muted loop playsinline preload="metadata" aria-label="Car detailing clip" class="w-full h-full object-cover"></video></div>
         <p class="text-sm text-center mt-3" style="color:var(--grey-600)">Full Detail — Lexus UX</p>
       </div>
       <div class="reveal d3">
-        <div class="rounded-none overflow-hidden" style="height:240px; background:#e4e4e7;"><video src="v6.mov" autoplay muted loop playsinline preload="metadata" aria-label="Car detailing clip" class="w-full h-full object-cover"></video></div>
+        <div class="rounded-none overflow-hidden" style="height:240px; background:#1a1a1a;"><video src="v6.mov" autoplay muted loop playsinline preload="metadata" aria-label="Car detailing clip" class="w-full h-full object-cover"></video></div>
         <p class="text-sm text-center mt-3" style="color:var(--grey-600)">Full Detail — Tesla Model 3</p>
       </div>
       <div class="reveal d1">
-        <div class="rounded-[4px] overflow-hidden" style="height:240px; background:#e4e4e7;"><video src="v7.mov" autoplay muted loop playsinline preload="metadata" aria-label="Car detailing clip" class="w-full h-full object-cover"></video></div>
+        <div class="rounded-[4px] overflow-hidden" style="height:240px; background:#1a1a1a;"><video src="v7.mov" autoplay muted loop playsinline preload="metadata" aria-label="Car detailing clip" class="w-full h-full object-cover"></video></div>
         <p class="text-sm text-center mt-3" style="color:var(--grey-600)">Interior Detail — Range Rover Defender</p>
       </div>
       <div class="reveal d2">
@@ -693,7 +687,7 @@
         <p class="text-sm text-center mt-3" style="color:var(--grey-600)">Clay and Seal — Tesla Model X</p>
       </div>
       <div class="reveal d3">
-        <div class="rounded-[18px] overflow-hidden" style="height:240px; background:#e4e4e7;"><video src="v9.mov" autoplay muted loop playsinline preload="metadata" aria-label="Car detailing clip" class="w-full h-full object-cover"></video></div>
+        <div class="rounded-[18px] overflow-hidden" style="height:240px; background:#1a1a1a;"><video src="v9.mov" autoplay muted loop playsinline preload="metadata" aria-label="Car detailing clip" class="w-full h-full object-cover"></video></div>
         <p class="text-sm text-center mt-3" style="color:var(--grey-600)">Interior Detail + Steam Clean — Honda Accord</p>
       </div>
     </div>
@@ -795,7 +789,7 @@
             <div class="px-4 py-2 text-xs cursor-pointer rounded-t-xl" style="color:var(--grey-600);"  onclick="setVehicle('int','Sedan / Smaller','$119.99')">Sedan / Smaller — $119.99</div>
             <div class="px-4 py-2 text-xs cursor-pointer" style="color:var(--grey-600);"  onclick="setVehicle('int','SUV (5-seater)','$129.99')">SUV (5-seater) — $129.99</div>
             <div class="px-4 py-2 text-xs cursor-pointer" style="color:var(--grey-600);"  onclick="setVehicle('int','SUV (7-seater)','$139.99')">SUV (7-seater) — $139.99</div>
-            <div class="px-4 py-2 hover:bg-gray-50 text-gray-700 text-xs cursor-pointer rounded-b-xl text-gray-400 italic">Pickup truck — same as Sedan / Smaller</div>
+            <div class="px-4 py-2 text-xs cursor-pointer rounded-b-xl italic">Pickup truck — same as Sedan / Smaller</div>
           </div>
         </small></div>
         <ul class="svc-feats">
@@ -955,13 +949,13 @@
             <div>
               <div class="text-xs font-semibold tracking-widest uppercase text-gray-400 mb-1.5">Hours</div>
               <div class="flex flex-col gap-0.5 text-[0.9rem]">
-                <div class="flex justify-between gap-8"><span class="text-gray-500">Mon</span><span class="font-medium" style="color:var(--grey-900)">7:00am – 7:00pm</span></div>
-                <div class="flex justify-between gap-8"><span class="text-gray-500">Tue</span><span class="font-medium" style="color:var(--grey-900)">7:00am – 7:00pm</span></div>
-                <div class="flex justify-between gap-8"><span class="text-gray-500">Wed</span><span class="font-medium" style="color:var(--grey-900)">7:00am – 7:00pm</span></div>
-                <div class="flex justify-between gap-8"><span class="text-gray-500">Thu</span><span class="font-medium" style="color:var(--grey-900)">7:00am – 7:00pm</span></div>
-                <div class="flex justify-between gap-8"><span class="text-gray-500">Fri</span><span class="font-medium" style="color:var(--grey-900)">7:00am – 7:00pm</span></div>
-                <div class="flex justify-between gap-8"><span class="text-gray-500">Sat</span><span class="font-medium" style="color:var(--grey-900)">7:00am – 12:00pm &amp; 3:00 – 7:00pm</span></div>
-                <div class="flex justify-between gap-8"><span class="text-gray-500">Sun</span><span class="font-medium" style="color:var(--grey-900)">1:00pm – 7:00pm</span></div>
+                <div class="flex justify-between gap-8"><span class="text-[#888888]">Mon</span><span class="font-medium" style="color:var(--grey-900)">7:00am – 7:00pm</span></div>
+                <div class="flex justify-between gap-8"><span class="text-[#888888]">Tue</span><span class="font-medium" style="color:var(--grey-900)">7:00am – 7:00pm</span></div>
+                <div class="flex justify-between gap-8"><span class="text-[#888888]">Wed</span><span class="font-medium" style="color:var(--grey-900)">7:00am – 7:00pm</span></div>
+                <div class="flex justify-between gap-8"><span class="text-[#888888]">Thu</span><span class="font-medium" style="color:var(--grey-900)">7:00am – 7:00pm</span></div>
+                <div class="flex justify-between gap-8"><span class="text-[#888888]">Fri</span><span class="font-medium" style="color:var(--grey-900)">7:00am – 7:00pm</span></div>
+                <div class="flex justify-between gap-8"><span class="text-[#888888]">Sat</span><span class="font-medium" style="color:var(--grey-900)">7:00am – 12:00pm &amp; 3:00 – 7:00pm</span></div>
+                <div class="flex justify-between gap-8"><span class="text-[#888888]">Sun</span><span class="font-medium" style="color:var(--grey-900)">1:00pm – 7:00pm</span></div>
               </div>
             </div>
           </div>
@@ -1394,16 +1388,16 @@
         </h2>
         <div class="gold-rule mb-8"></div>
 
-        <p class="text-gray-600 leading-relaxed text-[0.945rem] mb-5">
+        <p class="leading-relaxed text-[0.945rem] mb-5">
           I'm Braedon. Back during COVID, I was a full-on germophobe. My room had to be spotless, everything in its place, not a single thing out of order. That level of meticulousness stuck with me, and over time it naturally shifted into something I'm actually proud of: an obsession with clean cars.
         </p>
-        <p class="text-gray-600 leading-relaxed text-[0.945rem] mb-5">
+        <p class="leading-relaxed text-[0.945rem] mb-5">
           The business itself started out of necessity. One day I checked my bank account and had $7.42 — not enough for a bucket of balls at the driving range. Instead of sitting around, I grabbed a bucket, some car soap, microfiber towels, and a wash mitt, and started knocking on doors around my neighborhood offering a quick $20 car wash. That's how this whole thing started.
         </p>
-        <p class="text-gray-600 leading-relaxed text-[0.945rem] mb-5">
+        <p class="leading-relaxed text-[0.945rem] mb-5">
           I don't carry the same germophobe energy these days, but that same eye for detail and zero tolerance for "good enough" absolutely carries over into every detail I do. When I'm working on your car, I treat it like it's mine.
         </p>
-        <p class="text-gray-600 leading-relaxed text-[0.945rem] mb-9">
+        <p class="leading-relaxed text-[0.945rem] mb-9">
           I'm heading to Santa Clara University this fall, but this business is real and it's not going anywhere. I show up on time, I work hard, and I don't leave until the job's done right. I'm building this one happy customer at a time and I'd love to earn yours.
         </p>
 
