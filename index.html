@@ -435,7 +435,7 @@
     }
     .city-pill:hover {
       background:rgba(212,168,75,.08);
-      border-color:rgba(212,168,75,.5);
+      border-color:rgba(212,168,75,.35);
       color:var(--gold-400);
     }
 
@@ -964,104 +964,171 @@
 
       <!-- Right: form -->
       <div class="reveal-right">
-        <form id="contact-form" class="rounded-[22px] p-8 border" 
+        <form id="contact-form" class="rounded-[22px] p-8 border"
               onsubmit="handleSubmit(event)" novalidate>
 
-          <div class="grid sm:grid-cols-2 gap-5 mb-5">
+          <!-- Section: Contact Info -->
+          <p class="text-[.68rem] font-semibold tracking-widest uppercase mb-3" style="color:var(--gold-400)">Contact Info</p>
+          <div class="grid sm:grid-cols-2 gap-4 mb-4">
             <div>
-              <label class="form-lbl" for="f-name">Your Name</label>
-              <input id="f-name" name="name" type="text" class="form-field"
-                     placeholder="Braedon Smith" required autocomplete="name">
+              <label class="form-lbl" for="f-name">Full Name</label>
+              <input id="f-name" name="name" type="text" class="form-field" placeholder="Jane Smith" required autocomplete="name">
             </div>
             <div>
-              <label class="form-lbl" for="f-phone">Phone / Email</label>
-              <input id="f-phone" name="contact" type="text" class="form-field"
-                     placeholder="(415) 555-0100" required autocomplete="tel">
+              <label class="form-lbl" for="f-phone">Phone Number</label>
+              <input id="f-phone" name="phone" type="tel" class="form-field" placeholder="(415) 555-0100" required autocomplete="tel">
             </div>
           </div>
-
-          <div class="mb-5">
-            <label class="form-lbl">Services Interested In</label>
-            <div class="rounded-[10px] p-4 flex flex-col gap-3" style="background:var(--grey-50); border:1px solid var(--grey-200);">
-              <p class="text-[.68rem] font-semibold tracking-widest uppercase text-gray-400 mb-1">Packages</p>
-
-              <!-- Basic Exterior Detail -->
-              <div class="flex flex-col gap-1">
-                <label class="flex items-center gap-3 cursor-pointer group">
-                  <input type="checkbox" id="chk-ext" class="w-4 h-4 accent-[#D4A84B] cursor-pointer" onchange="updatePkgValue('ext')">
-                  <span class="text-sm transition-colors" style="color:var(--grey-900)">Basic Exterior Detail <span id="form-ext-price" class="text-gray-400 font-normal">$79.99</span></span>
-                </label>
-                <input type="hidden" name="service" id="val-ext" value="">
-                <select id="sel-ext" onchange="updatePkgValue('ext')" class="ml-7 text-xs rounded-lg px-2 py-1" style="border:1px solid var(--grey-200); background:var(--white); color:var(--grey-600); cursor:pointer;">
-                  <option value="Sedan / Smaller - $79.99">Sedan / Smaller - $79.99</option>
-                  <option value="Midsize SUV - $89.99">Midsize SUV - $89.99</option>
-                  <option value="Full-size SUV - $99.99">Full-size SUV - $99.99</option>
-                  <option value="Truck / Van - $109.99">Truck / Van - $109.99</option>
-                </select>
-              </div>
-
-              <!-- Standard Interior Detail -->
-              <div class="flex flex-col gap-1">
-                <label class="flex items-center gap-3 cursor-pointer group">
-                  <input type="checkbox" id="chk-int" class="w-4 h-4 accent-[#D4A84B] cursor-pointer" onchange="updatePkgValue('int')">
-                  <span class="text-sm transition-colors" style="color:var(--grey-900)">Standard Interior Detail <span id="form-int-price" class="text-gray-400 font-normal">$119.99</span></span>
-                </label>
-                <input type="hidden" name="service" id="val-int" value="">
-                <select id="sel-int" onchange="updatePkgValue('int')" class="ml-7 text-xs rounded-lg px-2 py-1" style="border:1px solid var(--grey-200); background:var(--white); color:var(--grey-600); cursor:pointer;">
-                  <option value="Sedan / Smaller - $119.99">Sedan / Smaller - $119.99</option>
-                  <option value="SUV (5-seater) - $129.99">SUV (5-seater) - $129.99</option>
-                  <option value="SUV (7-seater) - $139.99">SUV (7-seater) - $139.99</option>
-                </select>
-              </div>
-
-              <!-- Full Detail Bundle -->
-              <div class="flex flex-col gap-1">
-                <label class="flex items-center gap-3 cursor-pointer group">
-                  <input type="checkbox" id="chk-bundle" class="w-4 h-4 accent-[#D4A84B] cursor-pointer" onchange="updatePkgValue('bundle')">
-                  <span class="text-sm transition-colors" style="color:var(--grey-900)">Full Detail Bundle <span id="form-bundle-price" class="text-gray-400 font-normal">$179.99 (save $20)</span></span>
-                </label>
-                <input type="hidden" name="service" id="val-bundle" value="">
-                <select id="sel-bundle" onchange="updatePkgValue('bundle')" class="ml-7 text-xs rounded-lg px-2 py-1" style="border:1px solid var(--grey-200); background:var(--white); color:var(--grey-600); cursor:pointer;">
-                  <option value="Sedan / Smaller - $179.99">Sedan / Smaller - $179.99</option>
-                  <option value="Midsize SUV - $189.99">Midsize SUV - $189.99</option>
-                  <option value="Full-size SUV - $199.99">Full-size SUV - $199.99</option>
-                  <option value="Truck / Van - $209.99">Truck / Van - $209.99</option>
-                </select>
-              </div>
-              <p class="text-[.68rem] font-semibold tracking-widest uppercase text-gray-400 mt-2 mb-1">Add-Ons</p>
-              <label class="flex items-center gap-3 cursor-pointer group">
-                <input type="checkbox" name="service" value="Steam Cleaning ($39.99)" class="w-4 h-4 accent-[#D4A84B] cursor-pointer">
-                <span class="text-sm transition-colors" style="color:var(--grey-900)">Steam Cleaning <span class="text-gray-400 font-normal">$39.99</span></span>
-              </label>
-              <label class="flex items-center gap-3 cursor-pointer group">
-                <input type="checkbox" name="service" value="Clay & Sealant ($49.99)" class="w-4 h-4 accent-[#D4A84B] cursor-pointer">
-                <span class="text-sm transition-colors" style="color:var(--grey-900)">Clay &amp; Sealant <span class="text-gray-400 font-normal">$49.99</span></span>
-              </label>
-              <label class="flex items-center gap-3 cursor-pointer group">
-                <input type="checkbox" name="service" value="Shampoo & Stain Extraction ($49.99+)" class="w-4 h-4 accent-[#D4A84B] cursor-pointer">
-                <span class="text-sm transition-colors" style="color:var(--grey-900)">Shampoo &amp; Stain Extraction <span class="text-gray-400 font-normal">from $49.99</span></span>
-              </label>
-              <label class="flex items-center gap-3 cursor-pointer group">
-                <input type="checkbox" name="service" value="Pet Hair Removal ($49.99+)" class="w-4 h-4 accent-[#D4A84B] cursor-pointer">
-                <span class="text-sm transition-colors" style="color:var(--grey-900)">Pet Hair Removal <span class="text-gray-400 font-normal">from $49.99</span></span>
-              </label>
-              <label class="flex items-center gap-3 cursor-pointer group">
-                <input type="checkbox" name="service" value="Plastic, Leather, Vinyl & Rubber Dressing ($29.99)" class="w-4 h-4 accent-[#D4A84B] cursor-pointer">
-                <span class="text-sm transition-colors" style="color:var(--grey-900)">Plastic, Leather, Vinyl &amp; Rubber Dressing <span class="text-gray-400 font-normal">$29.99</span></span>
-              </label>
-            </div>
-          </div>
-
-          <div class="mb-5">
-            <label class="form-lbl" for="f-vehicle">Vehicle</label>
-            <input id="f-vehicle" name="vehicle" type="text" class="form-field"
-                   placeholder="2022 Tesla Model 3" autocomplete="off">
-          </div>
-
           <div class="mb-6">
-            <label class="form-lbl" for="f-msg">Message (optional)</label>
-            <textarea id="f-msg" name="message" class="form-field"
-                      placeholder="Any additional details, preferred date/time, or questions…"></textarea>
+            <label class="form-lbl" for="f-email">Email Address</label>
+            <input id="f-email" name="email" type="email" class="form-field" placeholder="jane@email.com" required autocomplete="email">
+          </div>
+
+          <!-- Section: Vehicle Info -->
+          <p class="text-[.68rem] font-semibold tracking-widest uppercase mb-3" style="color:var(--gold-400)">Vehicle Info</p>
+          <div class="grid sm:grid-cols-3 gap-4 mb-4">
+            <div>
+              <label class="form-lbl" for="f-year">Year</label>
+              <input id="f-year" name="year" type="text" class="form-field" placeholder="2022" maxlength="4">
+            </div>
+            <div>
+              <label class="form-lbl" for="f-make">Make</label>
+              <input id="f-make" name="make" type="text" class="form-field" placeholder="Tesla">
+            </div>
+            <div>
+              <label class="form-lbl" for="f-model">Model</label>
+              <input id="f-model" name="model" type="text" class="form-field" placeholder="Model 3">
+            </div>
+          </div>
+          <div class="grid sm:grid-cols-2 gap-4 mb-6">
+            <div>
+              <label class="form-lbl" for="f-color">Color</label>
+              <input id="f-color" name="color" type="text" class="form-field" placeholder="Pearl White">
+            </div>
+            <div>
+              <label class="form-lbl" for="f-condition">Vehicle Condition</label>
+              <select id="f-condition" name="condition" class="form-field" style="cursor:pointer;">
+                <option value="">Select condition...</option>
+                <option value="Light - regular upkeep">Light - regular upkeep</option>
+                <option value="Moderate - a few months of use">Moderate - a few months of use</option>
+                <option value="Heavy - neglected / very dirty">Heavy - neglected / very dirty</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Section: Service -->
+          <p class="text-[.68rem] font-semibold tracking-widest uppercase mb-3" style="color:var(--gold-400)">Services</p>
+          <div class="rounded-[10px] p-4 flex flex-col gap-3 mb-6" style="background:var(--grey-50); border:1px solid var(--grey-200);">
+            <p class="text-[.68rem] font-semibold tracking-widest uppercase text-gray-400 mb-1">Packages</p>
+            <div class="flex flex-col gap-1">
+              <label class="flex items-center gap-3 cursor-pointer">
+                <input type="checkbox" id="chk-ext" class="w-4 h-4 accent-[#D4A84B] cursor-pointer" onchange="updatePkgValue('ext')">
+                <span class="text-sm" style="color:var(--grey-900)">Basic Exterior Detail <span id="form-ext-price" class="text-gray-400 font-normal">$79.99</span></span>
+              </label>
+              <input type="hidden" name="service" id="val-ext" value="">
+              <select id="sel-ext" onchange="updatePkgValue('ext')" class="ml-7 text-xs rounded-lg px-2 py-1" style="border:1px solid var(--grey-200); background:var(--white); color:var(--grey-600); cursor:pointer;">
+                <option value="Sedan / Smaller - $79.99">Sedan / Smaller - $79.99</option>
+                <option value="Midsize SUV - $89.99">Midsize SUV - $89.99</option>
+                <option value="Full-size SUV - $99.99">Full-size SUV - $99.99</option>
+                <option value="Truck / Van - $109.99">Truck / Van - $109.99</option>
+              </select>
+            </div>
+            <div class="flex flex-col gap-1">
+              <label class="flex items-center gap-3 cursor-pointer">
+                <input type="checkbox" id="chk-int" class="w-4 h-4 accent-[#D4A84B] cursor-pointer" onchange="updatePkgValue('int')">
+                <span class="text-sm" style="color:var(--grey-900)">Standard Interior Detail <span id="form-int-price" class="text-gray-400 font-normal">$119.99</span></span>
+              </label>
+              <input type="hidden" name="service" id="val-int" value="">
+              <select id="sel-int" onchange="updatePkgValue('int')" class="ml-7 text-xs rounded-lg px-2 py-1" style="border:1px solid var(--grey-200); background:var(--white); color:var(--grey-600); cursor:pointer;">
+                <option value="Sedan / Smaller - $119.99">Sedan / Smaller - $119.99</option>
+                <option value="SUV (5-seater) - $129.99">SUV (5-seater) - $129.99</option>
+                <option value="SUV (7-seater) - $139.99">SUV (7-seater) - $139.99</option>
+              </select>
+            </div>
+            <div class="flex flex-col gap-1">
+              <label class="flex items-center gap-3 cursor-pointer">
+                <input type="checkbox" id="chk-bundle" class="w-4 h-4 accent-[#D4A84B] cursor-pointer" onchange="updatePkgValue('bundle')">
+                <span class="text-sm" style="color:var(--grey-900)">Full Detail Bundle <span id="form-bundle-price" class="text-gray-400 font-normal">$179.99 (save $20)</span></span>
+              </label>
+              <input type="hidden" name="service" id="val-bundle" value="">
+              <select id="sel-bundle" onchange="updatePkgValue('bundle')" class="ml-7 text-xs rounded-lg px-2 py-1" style="border:1px solid var(--grey-200); background:var(--white); color:var(--grey-600); cursor:pointer;">
+                <option value="Sedan / Smaller - $179.99">Sedan / Smaller - $179.99</option>
+                <option value="Midsize SUV - $189.99">Midsize SUV - $189.99</option>
+                <option value="Full-size SUV - $199.99">Full-size SUV - $199.99</option>
+                <option value="Truck / Van - $209.99">Truck / Van - $209.99</option>
+              </select>
+            </div>
+            <p class="text-[.68rem] font-semibold tracking-widest uppercase text-gray-400 mt-2 mb-1">Add-Ons</p>
+            <label class="flex items-center gap-3 cursor-pointer">
+              <input type="checkbox" name="service" value="Steam Cleaning ($39.99)" class="w-4 h-4 accent-[#D4A84B] cursor-pointer">
+              <span class="text-sm" style="color:var(--grey-900)">Steam Cleaning <span class="text-gray-400 font-normal">$39.99</span></span>
+            </label>
+            <label class="flex items-center gap-3 cursor-pointer">
+              <input type="checkbox" name="service" value="Clay & Sealant ($49.99)" class="w-4 h-4 accent-[#D4A84B] cursor-pointer">
+              <span class="text-sm" style="color:var(--grey-900)">Clay &amp; Sealant <span class="text-gray-400 font-normal">$49.99</span></span>
+            </label>
+            <label class="flex items-center gap-3 cursor-pointer">
+              <input type="checkbox" name="service" value="Shampoo & Stain Extraction ($49.99+)" class="w-4 h-4 accent-[#D4A84B] cursor-pointer">
+              <span class="text-sm" style="color:var(--grey-900)">Shampoo &amp; Stain Extraction <span class="text-gray-400 font-normal">from $49.99</span></span>
+            </label>
+            <label class="flex items-center gap-3 cursor-pointer">
+              <input type="checkbox" name="service" value="Pet Hair Removal ($49.99+)" class="w-4 h-4 accent-[#D4A84B] cursor-pointer">
+              <span class="text-sm" style="color:var(--grey-900)">Pet Hair Removal <span class="text-gray-400 font-normal">from $49.99</span></span>
+            </label>
+            <label class="flex items-center gap-3 cursor-pointer">
+              <input type="checkbox" name="service" value="Plastic, Leather, Vinyl & Rubber Dressing ($29.99)" class="w-4 h-4 accent-[#D4A84B] cursor-pointer">
+              <span class="text-sm" style="color:var(--grey-900)">Plastic, Leather, Vinyl &amp; Rubber Dressing <span class="text-gray-400 font-normal">$29.99</span></span>
+            </label>
+          </div>
+
+          <!-- Section: Appointment -->
+          <p class="text-[.68rem] font-semibold tracking-widest uppercase mb-3" style="color:var(--gold-400)">Appointment</p>
+          <div class="grid sm:grid-cols-2 gap-4 mb-4">
+            <div>
+              <label class="form-lbl" for="f-date">Preferred Date</label>
+              <input id="f-date" name="date" type="date" class="form-field" style="cursor:pointer;">
+            </div>
+            <div>
+              <label class="form-lbl" for="f-time">Preferred Time</label>
+              <select id="f-time" name="time" class="form-field" style="cursor:pointer;">
+                <option value="">Select a time...</option>
+                <option value="Morning (7am - 11am)">Morning (7am - 11am)</option>
+                <option value="Midday (11am - 2pm)">Midday (11am - 2pm)</option>
+                <option value="Afternoon (2pm - 5pm)">Afternoon (2pm - 5pm)</option>
+                <option value="Evening (5pm - 7pm)">Evening (5pm - 7pm)</option>
+              </select>
+            </div>
+          </div>
+          <div class="mb-4">
+            <label class="form-lbl" for="f-location">Service Type</label>
+            <select id="f-location" name="location" class="form-field" onchange="toggleAddressField(this.value)" style="cursor:pointer;">
+              <option value="">Select type...</option>
+              <option value="Mobile - come to me">Mobile - come to me</option>
+              <option value="In-Shop - I'll drop off">In-Shop - I'll drop off</option>
+            </select>
+          </div>
+          <div id="address-field" class="mb-4 hidden">
+            <label class="form-lbl" for="f-address">Service Address</label>
+            <input id="f-address" name="address" type="text" class="form-field" placeholder="123 Main St, San Francisco, CA" autocomplete="street-address">
+          </div>
+          <div class="mb-6">
+            <label class="form-lbl" for="f-referral">How did you hear about us?</label>
+            <select id="f-referral" name="referral" class="form-field" style="cursor:pointer;">
+              <option value="">Select...</option>
+              <option value="Google Search">Google Search</option>
+              <option value="Google Maps">Google Maps</option>
+              <option value="Instagram">Instagram</option>
+              <option value="Friend / Word of Mouth">Friend / Word of Mouth</option>
+              <option value="Nextdoor">Nextdoor</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <!-- Section: Notes -->
+          <p class="text-[.68rem] font-semibold tracking-widest uppercase mb-3" style="color:var(--gold-400)">Additional Notes</p>
+          <div class="mb-6">
+            <label class="form-lbl" for="f-msg">Anything else we should know?</label>
+            <textarea id="f-msg" name="message" class="form-field" placeholder="Specific concerns, stains, damage, access instructions..."></textarea>
           </div>
 
           <button type="submit" class="btn-gold w-full justify-center text-base" id="form-submit">
@@ -1071,15 +1138,14 @@
             </svg>
           </button>
 
-          <!-- Success state (hidden) -->
           <div id="form-success" class="hidden text-center py-4">
             <div class="text-2xl mb-2">
               <svg class="inline w-10 h-10" viewBox="0 0 24 24" fill="none" stroke="#D4A84B" stroke-width="2" aria-hidden="true">
                 <path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/>
               </svg>
             </div>
-            <p class="font-semibold text-[var(--navy-900)]">Request sent!</p>
-            <p class="text-sm text-gray-500 mt-1">We'll be in touch within a few hours.</p>
+            <p class="font-semibold" style="color:var(--grey-900)">Request sent!</p>
+            <p class="text-sm text-gray-500 mt-1">I'll be in touch within a few hours to confirm.</p>
           </div>
 
         </form>
@@ -1675,6 +1741,12 @@ function updatePkgValue(pkg) {
   lbl.textContent = pkgPriceLabels[pkg].labels[chosen] || pkgPriceLabels[pkg].base;
 }
 
+// ── Address field toggle ──────────────────
+function toggleAddressField(val) {
+  const el = document.getElementById('address-field');
+  el.classList.toggle('hidden', val !== 'Mobile - come to me');
+}
+
 // ── Form submit ───────────────────────────
 async function handleSubmit(e) {
   e.preventDefault();
@@ -1690,11 +1762,21 @@ async function handleSubmit(e) {
     .map(cb => cb.value);
 
   const payload = {
-    name:    form.querySelector('#f-name').value,
-    contact: form.querySelector('#f-phone').value,
-    service: services,
-    vehicle: form.querySelector('#f-vehicle').value,
-    message: form.querySelector('#f-msg').value,
+    name:      form.querySelector('#f-name').value,
+    phone:     form.querySelector('#f-phone').value,
+    email:     form.querySelector('#f-email').value,
+    year:      form.querySelector('#f-year').value,
+    make:      form.querySelector('#f-make').value,
+    model:     form.querySelector('#f-model').value,
+    color:     form.querySelector('#f-color').value,
+    condition: form.querySelector('#f-condition').value,
+    service:   services,
+    date:      form.querySelector('#f-date').value,
+    time:      form.querySelector('#f-time').value,
+    location:  form.querySelector('#f-location').value,
+    address:   form.querySelector('#f-address').value,
+    referral:  form.querySelector('#f-referral').value,
+    message:   form.querySelector('#f-msg').value,
   };
 
   try {
