@@ -1086,16 +1086,13 @@
           <div class="grid sm:grid-cols-2 gap-4 mb-4">
             <div>
               <label class="form-lbl" for="f-date">Preferred Date</label>
-              <input id="f-date" name="date" type="date" class="form-field" style="cursor:pointer;">
+              <input id="f-date" name="date" type="date" class="form-field" min="2026-06-22" style="cursor:pointer;" onchange="updateTimeSlots(this.value)">
+              <p id="f-date-msg" class="text-xs mt-1 hidden" style="color:#E53E3E;"></p>
             </div>
             <div>
               <label class="form-lbl" for="f-time">Preferred Time</label>
               <select id="f-time" name="time" class="form-field" style="cursor:pointer;">
-                <option value="">Select a time...</option>
-                <option value="Morning (7am - 11am)">Morning (7am - 11am)</option>
-                <option value="Midday (11am - 2pm)">Midday (11am - 2pm)</option>
-                <option value="Afternoon (2pm - 5pm)">Afternoon (2pm - 5pm)</option>
-                <option value="Evening (5pm - 7pm)">Evening (5pm - 7pm)</option>
+                <option value="">Select a date first...</option>
               </select>
             </div>
           </div>
@@ -1739,6 +1736,48 @@ function updatePkgValue(pkg) {
     val.value = '';
   }
   lbl.textContent = pkgPriceLabels[pkg].labels[chosen] || pkgPriceLabels[pkg].base;
+}
+
+// ── Date / time availability ──────────────
+function updateTimeSlots(dateStr) {
+  const msg = document.getElementById('f-date-msg');
+  const timeEl = document.getElementById('f-time');
+  timeEl.innerHTML = '';
+
+  if (!dateStr) {
+    timeEl.innerHTML = '<option value="">Select a date first...</option>';
+    msg.classList.add('hidden');
+    return;
+  }
+
+  // date input gives YYYY-MM-DD in local time; parse as local
+  const [y, m, d] = dateStr.split('-').map(Number);
+  const date = new Date(y, m - 1, d);
+  const day = date.getDay(); // 0=Sun, 6=Sat
+
+  if (day === 6) {
+    timeEl.innerHTML = '<option value="">Not available Saturdays</option>';
+    msg.textContent = 'Saturdays are unavailable. Please choose another day.';
+    msg.classList.remove('hidden');
+    return;
+  }
+
+  msg.classList.add('hidden');
+
+  const slots = day === 0
+    ? [ // Sunday 1pm - 7pm
+        ['Afternoon (1pm - 4pm)', 'Afternoon (1pm - 4pm)'],
+        ['Evening (4pm - 7pm)',   'Evening (4pm - 7pm)'],
+      ]
+    : [ // Weekdays 7am - 7pm
+        ['Morning (7am - 11am)',  'Morning (7am - 11am)'],
+        ['Midday (11am - 2pm)',   'Midday (11am - 2pm)'],
+        ['Afternoon (2pm - 5pm)', 'Afternoon (2pm - 5pm)'],
+        ['Evening (5pm - 7pm)',   'Evening (5pm - 7pm)'],
+      ];
+
+  timeEl.innerHTML = '<option value="">Select a time...</option>' +
+    slots.map(([val, label]) => `<option value="${val}">${label}</option>`).join('');
 }
 
 // ── Address field toggle ──────────────────
