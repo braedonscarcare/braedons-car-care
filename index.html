@@ -342,8 +342,10 @@
       border:none; cursor:pointer; transition: all .2s;
       text-decoration:none;
     }
-    .btn-card-dark  { background:rgba(255,255,255,.08); color:var(--grey-900); border:1.5px solid rgba(255,255,255,.15); }
-    .btn-card-dark:hover  { background:var(--grey-900); color:white; transform:translateY(-1px); }
+    .btn-card-dark  { background:transparent; color:var(--grey-900); border:1.5px solid var(--grey-200); }
+    .btn-card-dark:hover  { background:var(--grey-900); color:white; border-color:var(--grey-900); transform:translateY(-1px); }
+    .btn-card-dark-inv  { background:rgba(255,255,255,.08); color:white; border:1.5px solid rgba(255,255,255,.18); }
+    .btn-card-dark-inv:hover  { background:white; color:var(--grey-900); transform:translateY(-1px); }
     .btn-card-gold  { background:var(--gold-400); color:var(--grey-900); }
     .btn-card-gold:hover  { background:var(--gold-500); transform:translateY(-1px); box-shadow:0 8px 22px rgba(212,168,75,.4); }
 
@@ -773,7 +775,7 @@
           <li class="svc-li"><span class="li-dot" aria-hidden="true"></span>Door panels, jambs &amp; console detail</li>
           <li class="svc-li"><span class="li-dot" aria-hidden="true"></span>Cracks &amp; crevice cleaning</li>
         </ul>
-        <a href="#contact" class="btn-card btn-card-gold">Book Full Detail</a>
+        <a href="#contact" class="btn-card btn-card-dark-inv">Book Full Detail</a>
       </article>
 
       <!-- STANDARD INTERIOR -->
