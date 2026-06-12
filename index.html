@@ -947,15 +947,12 @@
             </div>
             <div>
               <div class="text-xs font-semibold tracking-widest uppercase text-gray-400 mb-1.5">Hours</div>
-              <div class="flex flex-col gap-0.5 text-[0.9rem]">
-                <div class="flex justify-between gap-8"><span class="text-[#888888]">Mon</span><span class="font-medium" style="color:var(--grey-900)">7:00am – 7:00pm</span></div>
-                <div class="flex justify-between gap-8"><span class="text-[#888888]">Tue</span><span class="font-medium" style="color:var(--grey-900)">7:00am – 7:00pm</span></div>
-                <div class="flex justify-between gap-8"><span class="text-[#888888]">Wed</span><span class="font-medium" style="color:var(--grey-900)">7:00am – 7:00pm</span></div>
-                <div class="flex justify-between gap-8"><span class="text-[#888888]">Thu</span><span class="font-medium" style="color:var(--grey-900)">7:00am – 7:00pm</span></div>
-                <div class="flex justify-between gap-8"><span class="text-[#888888]">Fri</span><span class="font-medium" style="color:var(--grey-900)">7:00am – 7:00pm</span></div>
-                <div class="flex justify-between gap-8"><span class="text-[#888888]">Sat</span><span class="font-medium" style="color:var(--grey-900)">7:00am – 12:00pm &amp; 3:00 – 7:00pm</span></div>
-                <div class="flex justify-between gap-8"><span class="text-[#888888]">Sun</span><span class="font-medium" style="color:var(--grey-900)">1:00pm – 7:00pm</span></div>
+              <div class="flex flex-col gap-1 text-[0.9rem]">
+                <div class="flex justify-between gap-8"><span class="text-[#888888]">Mon - Fri</span><span class="font-medium" style="color:#2D8B4E">7:00am - 7:00pm</span></div>
+                <div class="flex justify-between gap-8"><span class="text-[#888888]">Sat</span><span class="font-medium text-red-400">Unavailable</span></div>
+                <div class="flex justify-between gap-8"><span class="text-[#888888]">Sun</span><span class="font-medium" style="color:#2D8B4E">1:00pm - 7:00pm</span></div>
               </div>
+              <p class="text-xs mt-2" style="color:var(--grey-400)">Next available: June 22, 2026</p>
             </div>
           </div>
 
@@ -1085,9 +1082,26 @@
           <p class="text-[.68rem] font-semibold tracking-widest uppercase mb-3" style="color:var(--gold-400)">Appointment</p>
           <div class="grid sm:grid-cols-2 gap-4 mb-4">
             <div>
-              <label class="form-lbl" for="f-date">Preferred Date</label>
-              <input id="f-date" name="date" type="date" class="form-field" min="2026-06-22" style="cursor:pointer;" onchange="updateTimeSlots(this.value)">
-              <p id="f-date-msg" class="text-xs mt-1 hidden" style="color:#E53E3E;"></p>
+              <label class="form-lbl">Preferred Date</label>
+              <input type="hidden" id="f-date" name="date">
+              <div id="cal-wrap" class="rounded-[10px] overflow-hidden" style="border:1.5px solid var(--grey-200); background:var(--white);">
+                <div class="flex items-center justify-between px-3 py-2" style="background:var(--grey-50); border-bottom:1px solid var(--grey-200);">
+                  <button type="button" onclick="calNav(-1)" class="w-7 h-7 flex items-center justify-center rounded hover:bg-gray-200 transition-colors" style="color:var(--grey-600);">&#8249;</button>
+                  <span id="cal-title" class="text-xs font-semibold" style="color:var(--grey-900);"></span>
+                  <button type="button" onclick="calNav(1)" class="w-7 h-7 flex items-center justify-center rounded hover:bg-gray-200 transition-colors" style="color:var(--grey-600);">&#8250;</button>
+                </div>
+                <div class="grid grid-cols-7 text-center" style="padding:4px 6px 2px;">
+                  <span class="text-[10px] font-semibold py-1" style="color:var(--grey-400)">Su</span>
+                  <span class="text-[10px] font-semibold py-1" style="color:var(--grey-400)">Mo</span>
+                  <span class="text-[10px] font-semibold py-1" style="color:var(--grey-400)">Tu</span>
+                  <span class="text-[10px] font-semibold py-1" style="color:var(--grey-400)">We</span>
+                  <span class="text-[10px] font-semibold py-1" style="color:var(--grey-400)">Th</span>
+                  <span class="text-[10px] font-semibold py-1" style="color:var(--grey-400)">Fr</span>
+                  <span class="text-[10px] font-semibold py-1" style="color:var(--grey-400)">Sa</span>
+                </div>
+                <div id="cal-grid" class="grid grid-cols-7 text-center gap-y-0.5" style="padding:0 6px 8px;"></div>
+              </div>
+              <p id="cal-selected" class="text-xs mt-1.5 font-medium hidden" style="color:var(--gold-500);"></p>
             </div>
             <div>
               <label class="form-lbl" for="f-time">Preferred Time</label>
@@ -1737,6 +1751,98 @@ function updatePkgValue(pkg) {
   }
   lbl.textContent = pkgPriceLabels[pkg].labels[chosen] || pkgPriceLabels[pkg].base;
 }
+
+// ── Custom Calendar ───────────────────────
+const CAL_START = new Date(2026, 5, 22); // June 22 2026
+let calYear, calMonth;
+
+function calInit() {
+  const today = new Date();
+  calYear  = CAL_START.getFullYear();
+  calMonth = CAL_START.getMonth();
+  calRender();
+}
+
+function calNav(dir) {
+  calMonth += dir;
+  if (calMonth > 11) { calMonth = 0; calYear++; }
+  if (calMonth < 0)  { calMonth = 11; calYear--; }
+  calRender();
+}
+
+function calRender() {
+  const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  document.getElementById('cal-title').textContent = months[calMonth] + ' ' + calYear;
+
+  const grid = document.getElementById('cal-grid');
+  grid.innerHTML = '';
+
+  const firstDay = new Date(calYear, calMonth, 1).getDay();
+  const daysInMonth = new Date(calYear, calMonth + 1, 0).getDate();
+  const today = new Date(); today.setHours(0,0,0,0);
+
+  // blank cells before first day
+  for (let i = 0; i < firstDay; i++) {
+    grid.insertAdjacentHTML('beforeend', '<div></div>');
+  }
+
+  for (let d = 1; d <= daysInMonth; d++) {
+    const date = new Date(calYear, calMonth, d);
+    const day  = date.getDay(); // 0=Sun 6=Sat
+    const past = date < CAL_START || date < today;
+    const sat  = day === 6;
+
+    let cls, style, clickable;
+    if (past || sat) {
+      cls = 'rounded text-[11px] py-1 cursor-default';
+      style = sat
+        ? 'color:#FCA5A5; text-decoration:line-through;'
+        : 'color:#D1D5DB;';
+      clickable = false;
+    } else {
+      cls = 'rounded text-[11px] py-1 cursor-pointer font-medium transition-all hover:opacity-80 cal-day';
+      style = 'background:#D1FAE5; color:#065F46;';
+      clickable = true;
+    }
+
+    const dateStr = calYear + '-' + String(calMonth+1).padStart(2,'0') + '-' + String(d).padStart(2,'0');
+    const onclick = clickable ? `calSelect('${dateStr}', this)` : '';
+    grid.insertAdjacentHTML('beforeend',
+      `<div class="${cls}" style="${style}" onclick="${onclick}" data-date="${dateStr}">${d}</div>`
+    );
+  }
+
+  // restore selected highlight if still in this month
+  const sel = document.getElementById('f-date').value;
+  if (sel) highlightSelected(sel);
+}
+
+function calSelect(dateStr, el) {
+  document.getElementById('f-date').value = dateStr;
+  highlightSelected(dateStr);
+  updateTimeSlots(dateStr);
+  const [y,m,d] = dateStr.split('-').map(Number);
+  const date = new Date(y, m-1, d);
+  const names = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const lbl = document.getElementById('cal-selected');
+  lbl.textContent = '✓ ' + names[date.getDay()] + ', ' + months[m-1] + ' ' + d + ', ' + y;
+  lbl.classList.remove('hidden');
+}
+
+function highlightSelected(dateStr) {
+  document.querySelectorAll('#cal-grid .cal-day').forEach(el => {
+    if (el.dataset.date === dateStr) {
+      el.style.background = '#D4A84B';
+      el.style.color = '#fff';
+    } else {
+      el.style.background = '#D1FAE5';
+      el.style.color = '#065F46';
+    }
+  });
+}
+
+document.addEventListener('DOMContentLoaded', calInit);
 
 // ── Date / time availability ──────────────
 function updateTimeSlots(dateStr) {
