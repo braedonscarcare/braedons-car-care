@@ -954,7 +954,7 @@
                 <div class="flex justify-between gap-8"><span class="text-[#888888]">Sat</span><span class="font-medium text-red-400">Unavailable</span></div>
                 <div class="flex justify-between gap-8"><span class="text-[#888888]">Sun</span><span class="font-medium" style="color:#2D8B4E">1:00pm - 7:00pm</span></div>
               </div>
-              <p class="text-xs mt-2" style="color:var(--grey-400)">Next available: June 22, 2026</p>
+              <p class="text-xs mt-2" style="color:var(--grey-400)">Next available: July 1, 2026</p>
             </div>
           </div>
 
@@ -1106,12 +1106,7 @@
               </div>
               <p id="cal-selected" class="text-xs mt-1.5 font-medium hidden" style="color:var(--gold-500);"></p>
             </div>
-            <div>
-              <label class="form-lbl" for="f-time">Preferred Time</label>
-              <select id="f-time" name="time" class="form-field" style="cursor:pointer;">
-                <option value="">Select a date first...</option>
-              </select>
-            </div>
+            <div><input type="hidden" id="f-time" name="time" value=""></div>
           </div>
           <div class="mb-4">
             <label class="form-lbl" for="f-location">Service Type</label>
@@ -1760,7 +1755,7 @@ function updatePkgValue(pkg) {
 }
 
 // ── Custom Calendar ───────────────────────
-const CAL_START = new Date(2026, 5, 22); // June 22 2026
+const CAL_START = new Date(2026, 6, 1); // July 1 2026
 let calYear, calMonth;
 
 function calInit() {
